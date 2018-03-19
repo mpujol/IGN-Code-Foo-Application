@@ -313,7 +313,7 @@ sampleGrid[3][3] = "X"
 //let testForRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: sampleGrid)
 //print(testForRandomStartingPoint)
 
-////1.3All starting points
+////1.3 All starting points
 //let testForAllStartingPoints = findValidPathsForAllStartingPoints(grid: sampleGrid)
 //print(testForAllStartingPoints)
 
@@ -322,9 +322,11 @@ sampleGrid[3][3] = "X"
 //
 //let randomGrid = createGrid(numberOfRows: 4, numberOfColumns: 4)
 //
+// 2.1 Random Starting point
 //let randomGridTestforRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: randomGrid)
 //print(randomGridTestforRandomStartingPoint)
 //
+// 2.2 All starting points
 //let randomGridTestfForAllStartingPoints = findValidPathsForAllStartingPoints(grid: randomGrid)
 //print(randomGridTestfForAllStartingPoints)
 
