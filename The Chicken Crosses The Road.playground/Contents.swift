@@ -2,7 +2,7 @@
 //
 // Hi Team IGN,
 //
-// I hope the following code meets your requirments for challenge 3.
+// I hope the following code meets your requirments for challenge #3.
 //
 // General notes: the description for the cells in the grid follow the (row,column) format
 //
@@ -220,7 +220,7 @@ func findValidPathsWithARandomStartingPoint(grid:[[String]]) -> Int {
         }
     } else {
         printOutGrid(grid: grid)
-        print("No Valid Starting Points")
+        print("No Valid Starting Point")
         return 0
     }
     
