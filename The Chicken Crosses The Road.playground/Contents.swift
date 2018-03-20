@@ -1,12 +1,13 @@
 // This is the code for required challenge #3
 //
-
+//
+//
 
 import Foundation
 
-// Classes
+// Classes & Constants
 
-struct Status {
+enum Status {
     static let valid = "Valid"
     static let unknown = "Unknown"
     static let invalid = "Invalid"
@@ -15,7 +16,7 @@ struct Status {
     static let blocked = "Blocked"
 }
 
-struct Direction {
+enum Direction {
     static let right = "Right"
     static let down = "Down"
     static let up = "Up"
@@ -24,11 +25,8 @@ struct Direction {
 class Location: NSObject {
     var distanceFromBottom:Int
     var distanceFromLeft:Int
-    
     var path:String
-    
     var status:String
-    
     var locationOfVisitedCells: [[Int]]
     
     override var description: String {
@@ -41,8 +39,6 @@ class Location: NSObject {
         self.path = path
         self.status = status
         self.locationOfVisitedCells = locationOfVisitedCells
-        
-        
     }
     
     init(distanceFromBottom: Int, distanceFromLeft:Int, status:String) {
@@ -51,9 +47,7 @@ class Location: NSObject {
         self.path = "(\(distanceFromLeft),\(distanceFromBottom))"
         self.status = status
         self.locationOfVisitedCells = [[distanceFromLeft,distanceFromBottom]]
-        
     }
-    
 }
 
 //Pathfinding Functions
@@ -79,52 +73,34 @@ func exploreInDirection(currentLocation:Location, direction: String, grid: [[Str
     
     // Append the path with the new cell
     let newPath:String = currentLocation.path + "->(\(newDistanceFromLeft),\(newDistanceFromBottom))"
-    
     let newStatus = Status.unknown
-    
     let newLocation = Location(distanceFromBottom: newDistanceFromBottom, distanceFromLeft: newDistanceFromLeft, path: newPath, status: newStatus, locationOfVisitedCells: currentLocation.locationOfVisitedCells)
     
     //Evaluate the new location
-    
     newLocation.status = checkLocationStatus(location: newLocation, grid: grid)
-    //    //Debugging
-    //    print(newLocation.status)
     
     if newLocation.status == Status.valid {
         newLocation.locationOfVisitedCells.append([newDistanceFromLeft,newDistanceFromBottom])
     }
-    
     return newLocation
-    
 }
 
 // Checks the status of a given location
 func checkLocationStatus(location: Location, grid: [[String]]) -> String {
-    
     let gridHeight = grid.count
     let gridWidth = grid[0].count
-    
     var temporaryGrid = grid
-    
     for cell in location.locationOfVisitedCells {
         temporaryGrid[cell[1]][cell[0]] = Status.visited
     }
-    
-    //    // Debugging for visited cells
-    //    for row in stride(from: temporaryGrid.count-1, through: 0, by: -1) {
-    //        print(temporaryGrid[row])
-    //    }
-    
     // check to make sure the current location isn't out of bounds
     if location.distanceFromBottom < 0 || location.distanceFromBottom > gridHeight - 1 || location.distanceFromLeft < 0 || location.distanceFromLeft > gridWidth - 1 {
         return Status.invalid
     }
-        
         //Check to see if there is an obstacle in the way
     else if grid[location.distanceFromBottom][location.distanceFromLeft] == "X" {
         return Status.blocked
     }
-        
         // check to see if it has reached the right side of the grid
     else if location.distanceFromLeft == gridWidth - 1 {
         return Status.goal
@@ -132,50 +108,39 @@ func checkLocationStatus(location: Location, grid: [[String]]) -> String {
         //Check to see if it has been visited previously
     else if temporaryGrid[location.distanceFromBottom][location.distanceFromLeft] == Status.visited {
         return Status.visited
-    }
-        
-    else {
+    } else {
         return Status.valid
     }
-    
 }
 
 // Find a single path given a single specified starting point
 func findValidPathsFor(startingPoint:Location, grid: [[String]]) -> Int {
     
     print("Evaluating Starting Point:(\(startingPoint.distanceFromLeft),\(startingPoint.distanceFromBottom))")
+    printOutGrid(grid: grid)
     
     //use the starting point as the beginning of the queue
     var queue = [startingPoint]
     var arrayOfValidLocationPaths = [Location]()
-    var updatedGrid = grid
     
-    
-    //check to see if the current location is an obstacle
+    //check to see if the current location is on the goal
     if checkLocationStatus(location: startingPoint, grid: grid) == Status.goal {
-        print("Staring Location not Valid")
+        print("Staring Location is on the goal. No Valid path")
+        print("Total Number of Valid Paths for (\(startingPoint.distanceFromLeft),\(startingPoint.distanceFromBottom)): \(arrayOfValidLocationPaths.count)")
         return 0
     }
-        //revise the grid if the inital starting point contains an obsticle and it is on the left side of the grid
+        //check to see if the current location is obstructed
     else if checkLocationStatus(location: startingPoint, grid: grid) == Status.blocked && startingPoint.distanceFromLeft == 0 {
-        updatedGrid[startingPoint.distanceFromBottom][startingPoint.distanceFromLeft] = "O"
-        print("Updated Starting Position to Ignore Pothole")
+        print("Starting Location is obstructed")
+        print("Total Number of Valid Paths for (\(startingPoint.distanceFromLeft),\(startingPoint.distanceFromBottom)): \(arrayOfValidLocationPaths.count)")
+        return 0
     }
-
-    printOutGrid(grid: updatedGrid)
-   
-    //loop through the grid till you find the goal
     
-    while (queue.count > 0) { //Recursion Stack
+    //loop through the grid till you find the goal
+    while (queue.count > 0) { //Pops off first location in queue and explores valid locations. if found, adds to queue until goal is reached or no additional valid locations are found
         
         //remove the first item in the queue
         let currentLocation = queue.removeFirst()
-        
-        //        //Debugging for queue
-        //        print("\(currentLocation.description) got popped off")
-        //        for row in stride(from: grid.count-1, through: 0, by: -1) {
-        //            print(grid[row])
-        //        }
         
         //Eplore in each valid direction Up, Right, & Down
         let directionArray = [Direction.up,Direction.right,Direction.down]
@@ -189,19 +154,14 @@ func findValidPathsFor(startingPoint:Location, grid: [[String]]) -> Int {
             }
         }
         
-        //debugging for recursion stack
-        //        for item in queue {
-        //            print("Queue List:\(item.description)")
-        //        }
     }
     for location in arrayOfValidLocationPaths {
         print("Valid Paths:\(location.path)")
     }
-    
     if arrayOfValidLocationPaths.count == 0 {
         print("No Valid Paths")
     }
-    
+    print("Total Number of Valid Paths for (\(startingPoint.distanceFromLeft),\(startingPoint.distanceFromBottom)): \(arrayOfValidLocationPaths.count)")
     return arrayOfValidLocationPaths.count
 }
 
@@ -211,45 +171,48 @@ func findValidPathsForAllStartingPoints(grid: [[String]]) -> [String:Int] {
     let numberStartingPoints = grid.count
     var temporaryDictionary = [String:Int]()
     for columnIndex in 0..<numberStartingPoints {
-        
         let currentStartingPoint = Location(distanceFromBottom: columnIndex, distanceFromLeft: 0, status: Status.unknown)
         let currentPathCount = findValidPathsFor(startingPoint: currentStartingPoint, grid: grid)
         temporaryDictionary["(\(currentStartingPoint.distanceFromLeft),\(currentStartingPoint.distanceFromBottom))"] = currentPathCount
     }
-    
     return temporaryDictionary
-    
 }
 
 // Find all valid paths on a grid for a single random valid starting point.
 func findValidPathsWithARandomStartingPoint(grid:[[String]]) -> Int {
     
     var validStartingPointSelected:Bool = false
-    
-    while validStartingPointSelected == false {
-        
-        let randomStartingPoint = Int(arc4random_uniform(UInt32(grid.count)))
-        
-        if grid[randomStartingPoint][0] == "O" {
-            
-            // Solve!
-            let currentStartingPoint = Location(distanceFromBottom: randomStartingPoint, distanceFromLeft: 0, status: Status.unknown)
-            let numberOfValidPaths = findValidPathsFor(startingPoint: currentStartingPoint, grid: grid)
-            
-            // Update status
-            validStartingPointSelected = true
-            
-            return numberOfValidPaths
+    // check to see if there is at least 1 valid starting point
+    var numberOfValidStartingPoints = 0
+    for  columnIndex in 0..<grid.count {
+        if grid[columnIndex][0] == "O" {
+            numberOfValidStartingPoints += 1
         }
     }
+    if numberOfValidStartingPoints > 0 {
+        while validStartingPointSelected == false {
+            let randomStartingPoint = Int(arc4random_uniform(UInt32(grid.count)))
+            if grid[randomStartingPoint][0] == "O" {
+                // Solve!
+                let currentStartingPoint = Location(distanceFromBottom: randomStartingPoint, distanceFromLeft: 0, status: Status.unknown)
+                let numberOfValidPaths = findValidPathsFor(startingPoint: currentStartingPoint, grid: grid)
+                // Update status
+                validStartingPointSelected = true
+                return numberOfValidPaths
+            }
+        }
+    } else {
+        printOutGrid(grid: grid)
+        print("No Valid Starting Points")
+        return 0
+    }
+    
+
 }
 
 //Grid Generation
-
 func createGrid(numberOfRows: Int, numberOfColumns:Int) -> [[String]] {
-    
     var grid = [[String]]()
-    
     for _ in 0..<numberOfColumns {
         var rowArray = [String]()
         for _ in 0..<numberOfRows {
@@ -257,25 +220,18 @@ func createGrid(numberOfRows: Int, numberOfColumns:Int) -> [[String]] {
         }
         grid.append(rowArray)
     }
-    
     let totalNumberOfCells = numberOfColumns * numberOfRows
-    
     var amountOfObstacles = (arc4random_uniform(UInt32(totalNumberOfCells-1))+1) // This ensures that at least 1 pothole is included
-    
     while amountOfObstacles > 0 {
         // assign a random cell with an "X" value
-        
         let randomRow = Int(arc4random_uniform(UInt32(numberOfRows)))
         let randomColumn = Int(arc4random_uniform(UInt32(numberOfColumns)))
-        
         let currentCell = grid[randomColumn][randomRow]
-        
         if currentCell == "O" {
             grid[randomColumn][randomRow] = "X"
             amountOfObstacles -= 1
         }
     }
-    
     return grid
 }
 
@@ -283,7 +239,6 @@ func printOutGrid(grid: [[String]]) {
     for row in stride(from: grid.count-1, through: 0, by: -1) {
         print(grid[row])
     }
-
 }
 
 // Tests
@@ -304,28 +259,28 @@ sampleGrid[3][3] = "X"
 
 
 //////1.1 Single selected starting point
-//let startingLocation = Location(distanceFromBottom: 3, distanceFromLeft: 2, status: Status.unknown)
+//let startingLocation = Location(distanceFromBottom: 3, distanceFromLeft: 0, status: Status.unknown)
 //
-//let testForSingleStartingPoint = findValidPathsFor(startingPoint: startingLocation, grid: sampleGrid)
-//print("Total Number of Valid Paths for (\(startingLocation.distanceFromLeft),\(startingLocation.distanceFromBottom)): \(testForSingleStartingPoint)")
-
+////let testForSingleStartingPoint = findValidPathsFor(startingPoint: startingLocation, grid: sampleGrid)
+////print("Total Number of Valid Paths for (\(startingLocation.distanceFromLeft),\(startingLocation.distanceFromBottom)): \(testForSingleStartingPoint)")
+//
 //////1.2 Random starting point
 //let testForRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: sampleGrid)
-//print(testForRandomStartingPoint)
-
-////1.3 All starting points
+////print(testForRandomStartingPoint)
+//
+//1.3 All starting points
 //let testForAllStartingPoints = findValidPathsForAllStartingPoints(grid: sampleGrid)
 //print(testForAllStartingPoints)
 
 
 //The following uses the created functions to evaluate a random Grid
-//
-//let randomGrid = createGrid(numberOfRows: 4, numberOfColumns: 4)
-//
+
+let randomGrid = createGrid(numberOfRows: 4, numberOfColumns: 4)
+
 // 2.1 Random Starting point
-//let randomGridTestforRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: randomGrid)
-//print(randomGridTestforRandomStartingPoint)
-//
+let randomGridTestforRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: randomGrid)
+print(randomGridTestforRandomStartingPoint)
+
 // 2.2 All starting points
 //let randomGridTestfForAllStartingPoints = findValidPathsForAllStartingPoints(grid: randomGrid)
 //print(randomGridTestfForAllStartingPoints)
