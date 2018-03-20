@@ -1,7 +1,24 @@
-// This is the code for required challenge #3
+// The Chicken Crosses The Road
 //
+// Hi Team IGN,
 //
+// I hope the following code meets your requirments for challenge 3.
 //
+// General notes: the description for the cells in the grid follow the (row,column) format
+//
+// There are 2 major functions that will be used for the program. They are uncommented and should show some information in the console upon running the program.
+// 1. (line 225) func createRandomGrid(numberOfRows: Int, numberOfColumns:Int) -> [[String]] - This creates a grid that can have a random number of "potholes" from 1 to the total amount of cells
+// 2. (line 193) func findValidPathsWithARandomStartingPoint(grid:[[String]]) -> Int - This solves for the number of unique paths for a random valid starting point.
+//
+// (Bonus Functions)
+// (Line 129) func findValidPathsFor(startingPoint:Location, grid: [[String]]) - This solves for a unique paths of a specified starting point.
+// (Line 180) func findValidPathsForAllStartingPoints(grid: [[String]]) -> [String:Int] - This returns a dictionary of all starting points and their respective amount of valid paths.
+//
+// The function calls currently being printed to the console are made on lines 294 and 295
+// I've included commented out code as well to go through the original sample & bonus functions.
+//
+// Edge cases:
+// If the random grid doesn't contain any starting points, the function will state "No valid staring points" in the console and return a value of 0
 
 import Foundation
 
@@ -211,7 +228,7 @@ func findValidPathsWithARandomStartingPoint(grid:[[String]]) -> Int {
 }
 
 //Grid Generation
-func createGrid(numberOfRows: Int, numberOfColumns:Int) -> [[String]] {
+func createRandomGrid(numberOfRows: Int, numberOfColumns:Int) -> [[String]] {
     var grid = [[String]]()
     for _ in 0..<numberOfColumns {
         var rowArray = [String]()
@@ -245,7 +262,6 @@ func printOutGrid(grid: [[String]]) {
 // I'll have a group of 2 tests that use the sample date and the randomly generated data for the folloiwng functions
 
 ////The following uses the function to solve for the example highlighted in the application webpage
-//
 var sampleGrid: [[String]] = [["O","O","O","O"],
                               ["O","O","O","O"],
                               ["O","O","O","O"],
@@ -258,31 +274,27 @@ sampleGrid[2][2] = "X"
 sampleGrid[3][3] = "X"
 
 
-//////1.1 Single selected starting point
-//let startingLocation = Location(distanceFromBottom: 3, distanceFromLeft: 0, status: Status.unknown)
-//
-////let testForSingleStartingPoint = findValidPathsFor(startingPoint: startingLocation, grid: sampleGrid)
-////print("Total Number of Valid Paths for (\(startingLocation.distanceFromLeft),\(startingLocation.distanceFromBottom)): \(testForSingleStartingPoint)")
-//
-//////1.2 Random starting point
+////1.1 Single selected starting point
+//let testForSingleStartingPoint = findValidPathsFor(startingPoint: Location(distanceFromBottom: 3, distanceFromLeft: 0, status: Status.unknown), grid: sampleGrid)
+//print(testForSingleStartingPoint)
+
+////1.2 Random starting point
 //let testForRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: sampleGrid)
-////print(testForRandomStartingPoint)
-//
-//1.3 All starting points
+//print(testForRandomStartingPoint)
+
+////1.3 All starting points
 //let testForAllStartingPoints = findValidPathsForAllStartingPoints(grid: sampleGrid)
 //print(testForAllStartingPoints)
 
 
 //The following uses the created functions to evaluate a random Grid
 
-let randomGrid = createGrid(numberOfRows: 4, numberOfColumns: 4)
-
 // 2.1 Random Starting point
-let randomGridTestforRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: randomGrid)
+let randomGridTestforRandomStartingPoint = findValidPathsWithARandomStartingPoint(grid: createRandomGrid(numberOfRows: 4, numberOfColumns: 4))
 print(randomGridTestforRandomStartingPoint)
 
 // 2.2 All starting points
-//let randomGridTestfForAllStartingPoints = findValidPathsForAllStartingPoints(grid: randomGrid)
+//let randomGridTestfForAllStartingPoints = findValidPathsForAllStartingPoints(grid: createRandomGrid(numberOfRows: 4, numberOfColumns: 4))
 //print(randomGridTestfForAllStartingPoints)
 
 
