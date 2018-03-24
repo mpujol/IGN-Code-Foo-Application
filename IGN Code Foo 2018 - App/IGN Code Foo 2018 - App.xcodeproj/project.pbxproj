@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B562066D46200D6E714 /* AppDelegate.swift */; };
+		BCF58B592066D46200D6E714 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B582066D46200D6E714 /* ViewController.swift */; };
+		BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5A2066D46200D6E714 /* Main.storyboard */; };
+		BCF58B5E2066D46200D6E714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5D2066D46200D6E714 /* Assets.xcassets */; };
+		BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */; };
+		BCF58B6C2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */; };
+		BCF58B772066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCF58B682066D46200D6E714 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCF58B4B2066D46200D6E714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF58B522066D46200D6E714;
+			remoteInfo = "IGN Code Foo 2018 - App";
+		};
+		BCF58B732066D46200D6E714 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCF58B4B2066D46200D6E714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF58B522066D46200D6E714;
+			remoteInfo = "IGN Code Foo 2018 - App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IGN Code Foo 2018 - App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF58B562066D46200D6E714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCF58B582066D46200D6E714 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BCF58B5B2066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCF58B5D2066D46200D6E714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCF58B602066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCF58B622066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "IGN Code Foo 2018 - App/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
+		BCF58B672066D46200D6E714 /* IGN Code Foo 2018 - AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IGN Code Foo 2018 - AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGN_Code_Foo_2018___AppTests.swift"; sourceTree = "<group>"; };
+		BCF58B6D2066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF58B722066D46200D6E714 /* IGN Code Foo 2018 - AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IGN Code Foo 2018 - AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGN_Code_Foo_2018___AppUITests.swift"; sourceTree = "<group>"; };
+		BCF58B782066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCF58B502066D46200D6E714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B642066D46200D6E714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B6F2066D46200D6E714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCF58B4A2066D46200D6E714 = {
+			isa = PBXGroup;
+			children = (
+				BCF58B552066D46200D6E714 /* IGN Code Foo 2018 - App */,
+				BCF58B6A2066D46200D6E714 /* IGN Code Foo 2018 - AppTests */,
+				BCF58B752066D46200D6E714 /* IGN Code Foo 2018 - AppUITests */,
+				BCF58B542066D46200D6E714 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCF58B542066D46200D6E714 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */,
+				BCF58B672066D46200D6E714 /* IGN Code Foo 2018 - AppTests.xctest */,
+				BCF58B722066D46200D6E714 /* IGN Code Foo 2018 - AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCF58B552066D46200D6E714 /* IGN Code Foo 2018 - App */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B872066DE4800D6E714 /* Controller */,
+				BCF58B862066DE4300D6E714 /* View */,
+				BCF58B852066DE3D00D6E714 /* Model */,
+				BCF58B562066D46200D6E714 /* AppDelegate.swift */,
+				BCF58B582066D46200D6E714 /* ViewController.swift */,
+				BCF58B842066DCF400D6E714 /* Supporting Files */,
+			);
+			path = "IGN Code Foo 2018 - App";
+			sourceTree = "<group>";
+		};
+		BCF58B6A2066D46200D6E714 /* IGN Code Foo 2018 - AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */,
+				BCF58B6D2066D46200D6E714 /* Info.plist */,
+			);
+			path = "IGN Code Foo 2018 - AppTests";
+			sourceTree = "<group>";
+		};
+		BCF58B752066D46200D6E714 /* IGN Code Foo 2018 - AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */,
+				BCF58B782066D46200D6E714 /* Info.plist */,
+			);
+			path = "IGN Code Foo 2018 - AppUITests";
+			sourceTree = "<group>";
+		};
+		BCF58B842066DCF400D6E714 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B5A2066D46200D6E714 /* Main.storyboard */,
+				BCF58B5D2066D46200D6E714 /* Assets.xcassets */,
+				BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */,
+				BCF58B622066D46200D6E714 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCF58B852066DE3D00D6E714 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCF58B862066DE4300D6E714 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCF58B872066DE4800D6E714 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCF58B522066D46200D6E714 /* IGN Code Foo 2018 - App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCF58B7B2066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - App" */;
+			buildPhases = (
+				BCF58B4F2066D46200D6E714 /* Sources */,
+				BCF58B502066D46200D6E714 /* Frameworks */,
+				BCF58B512066D46200D6E714 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IGN Code Foo 2018 - App";
+			productName = "IGN Code Foo 2018 - App";
+			productReference = BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCF58B662066D46200D6E714 /* IGN Code Foo 2018 - AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCF58B7E2066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - AppTests" */;
+			buildPhases = (
+				BCF58B632066D46200D6E714 /* Sources */,
+				BCF58B642066D46200D6E714 /* Frameworks */,
+				BCF58B652066D46200D6E714 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCF58B692066D46200D6E714 /* PBXTargetDependency */,
+			);
+			name = "IGN Code Foo 2018 - AppTests";
+			productName = "IGN Code Foo 2018 - AppTests";
+			productReference = BCF58B672066D46200D6E714 /* IGN Code Foo 2018 - AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BCF58B712066D46200D6E714 /* IGN Code Foo 2018 - AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCF58B812066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - AppUITests" */;
+			buildPhases = (
+				BCF58B6E2066D46200D6E714 /* Sources */,
+				BCF58B6F2066D46200D6E714 /* Frameworks */,
+				BCF58B702066D46200D6E714 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCF58B742066D46200D6E714 /* PBXTargetDependency */,
+			);
+			name = "IGN Code Foo 2018 - AppUITests";
+			productName = "IGN Code Foo 2018 - AppUITests";
+			productReference = BCF58B722066D46200D6E714 /* IGN Code Foo 2018 - AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCF58B4B2066D46200D6E714 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Michael Pujol";
+				TargetAttributes = {
+					BCF58B522066D46200D6E714 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					BCF58B662066D46200D6E714 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BCF58B522066D46200D6E714;
+					};
+					BCF58B712066D46200D6E714 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BCF58B522066D46200D6E714;
+					};
+				};
+			};
+			buildConfigurationList = BCF58B4E2066D46200D6E714 /* Build configuration list for PBXProject "IGN Code Foo 2018 - App" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCF58B4A2066D46200D6E714;
+			productRefGroup = BCF58B542066D46200D6E714 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCF58B522066D46200D6E714 /* IGN Code Foo 2018 - App */,
+				BCF58B662066D46200D6E714 /* IGN Code Foo 2018 - AppTests */,
+				BCF58B712066D46200D6E714 /* IGN Code Foo 2018 - AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCF58B512066D46200D6E714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */,
+				BCF58B5E2066D46200D6E714 /* Assets.xcassets in Resources */,
+				BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B652066D46200D6E714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B702066D46200D6E714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCF58B4F2066D46200D6E714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF58B592066D46200D6E714 /* ViewController.swift in Sources */,
+				BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B632066D46200D6E714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF58B6C2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCF58B6E2066D46200D6E714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF58B772066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCF58B692066D46200D6E714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCF58B522066D46200D6E714 /* IGN Code Foo 2018 - App */;
+			targetProxy = BCF58B682066D46200D6E714 /* PBXContainerItemProxy */;
+		};
+		BCF58B742066D46200D6E714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCF58B522066D46200D6E714 /* IGN Code Foo 2018 - App */;
+			targetProxy = BCF58B732066D46200D6E714 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BCF58B5A2066D46200D6E714 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF58B5B2066D46200D6E714 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCF58B602066D46200D6E714 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCF58B792066D46200D6E714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCF58B7A2066D46200D6E714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCF58B7C2066D46200D6E714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - App/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCF58B7D2066D46200D6E714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - App/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BCF58B7F2066D46200D6E714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IGN Code Foo 2018 - App.app/IGN Code Foo 2018 - App";
+			};
+			name = Debug;
+		};
+		BCF58B802066D46200D6E714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IGN Code Foo 2018 - App.app/IGN Code Foo 2018 - App";
+			};
+			name = Release;
+		};
+		BCF58B822066D46200D6E714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "IGN Code Foo 2018 - App";
+			};
+			name = Debug;
+		};
+		BCF58B832066D46200D6E714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BPJV79PL6;
+				INFOPLIST_FILE = "IGN Code Foo 2018 - AppUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.pujol.IGN-Code-Foo-2018---AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "IGN Code Foo 2018 - App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCF58B4E2066D46200D6E714 /* Build configuration list for PBXProject "IGN Code Foo 2018 - App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF58B792066D46200D6E714 /* Debug */,
+				BCF58B7A2066D46200D6E714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCF58B7B2066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF58B7C2066D46200D6E714 /* Debug */,
+				BCF58B7D2066D46200D6E714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCF58B7E2066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF58B7F2066D46200D6E714 /* Debug */,
+				BCF58B802066D46200D6E714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCF58B812066D46200D6E714 /* Build configuration list for PBXNativeTarget "IGN Code Foo 2018 - AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF58B822066D46200D6E714 /* Debug */,
+				BCF58B832066D46200D6E714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCF58B4B2066D46200D6E714 /* Project object */;
+}
