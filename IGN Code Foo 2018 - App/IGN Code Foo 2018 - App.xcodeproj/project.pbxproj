@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B562066D46200D6E714 /* AppDelegate.swift */; };
-		BCF58B592066D46200D6E714 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B582066D46200D6E714 /* ViewController.swift */; };
 		BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5A2066D46200D6E714 /* Main.storyboard */; };
 		BCF58B5E2066D46200D6E714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5D2066D46200D6E714 /* Assets.xcassets */; };
 		BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */; };
 		BCF58B6C2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */; };
 		BCF58B772066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */; };
+		BCF58B892066DF4200D6E714 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B882066DF4200D6E714 /* RootViewController.swift */; };
+		BCF58B8B2066DFA000D6E714 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B8A2066DFA000D6E714 /* Content.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IGN Code Foo 2018 - App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF58B562066D46200D6E714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCF58B582066D46200D6E714 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCF58B5B2066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCF58B5D2066D46200D6E714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCF58B602066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		BCF58B722066D46200D6E714 /* IGN Code Foo 2018 - AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IGN Code Foo 2018 - AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGN_Code_Foo_2018___AppUITests.swift"; sourceTree = "<group>"; };
 		BCF58B782066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF58B882066DF4200D6E714 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		BCF58B8A2066DFA000D6E714 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +99,10 @@
 		BCF58B552066D46200D6E714 /* IGN Code Foo 2018 - App */ = {
 			isa = PBXGroup;
 			children = (
+				BCF58B562066D46200D6E714 /* AppDelegate.swift */,
 				BCF58B872066DE4800D6E714 /* Controller */,
 				BCF58B862066DE4300D6E714 /* View */,
 				BCF58B852066DE3D00D6E714 /* Model */,
-				BCF58B562066D46200D6E714 /* AppDelegate.swift */,
-				BCF58B582066D46200D6E714 /* ViewController.swift */,
 				BCF58B842066DCF400D6E714 /* Supporting Files */,
 			);
 			path = "IGN Code Foo 2018 - App";
@@ -139,6 +140,7 @@
 		BCF58B852066DE3D00D6E714 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCF58B8A2066DFA000D6E714 /* Content.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +155,7 @@
 		BCF58B872066DE4800D6E714 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BCF58B882066DF4200D6E714 /* RootViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,8 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF58B592066D46200D6E714 /* ViewController.swift in Sources */,
+				BCF58B892066DF4200D6E714 /* RootViewController.swift in Sources */,
 				BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */,
+				BCF58B8B2066DFA000D6E714 /* Content.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
