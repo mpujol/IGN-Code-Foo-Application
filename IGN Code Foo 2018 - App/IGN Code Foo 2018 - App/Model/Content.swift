@@ -12,9 +12,7 @@ struct Feed: Decodable {
     let count: Int
     let startIndex: Int
     let data: [Data]
-    
-}
-
+    }
 
 struct Data: Decodable {
     let contentId:String
@@ -31,7 +29,6 @@ struct Metadata: Decodable {
     let slug: String
     let networks: [String]
     let state: String
-    
 }
 
 struct Thumbnail: Decodable {

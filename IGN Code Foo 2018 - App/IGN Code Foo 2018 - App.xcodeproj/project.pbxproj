@@ -13,8 +13,10 @@
 		BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */; };
 		BCF58B6C2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */; };
 		BCF58B772066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */; };
-		BCF58B892066DF4200D6E714 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B882066DF4200D6E714 /* RootViewController.swift */; };
 		BCF58B8B2066DFA000D6E714 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B8A2066DFA000D6E714 /* Content.swift */; };
+		BCF58B8E2066E76E00D6E714 /* IGNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B8D2066E76E00D6E714 /* IGNAPI.swift */; };
+		BCF58B942067014100D6E714 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B932067014100D6E714 /* HomeController.swift */; };
+		BCF58B9720670B1B00D6E714 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B9620670B1B00D6E714 /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +49,10 @@
 		BCF58B722066D46200D6E714 /* IGN Code Foo 2018 - AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IGN Code Foo 2018 - AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGN_Code_Foo_2018___AppUITests.swift"; sourceTree = "<group>"; };
 		BCF58B782066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCF58B882066DF4200D6E714 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		BCF58B8A2066DFA000D6E714 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		BCF58B8D2066E76E00D6E714 /* IGNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGNAPI.swift; sourceTree = "<group>"; };
+		BCF58B932067014100D6E714 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		BCF58B9620670B1B00D6E714 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +104,11 @@
 			isa = PBXGroup;
 			children = (
 				BCF58B562066D46200D6E714 /* AppDelegate.swift */,
+				BCF58B8C2066E2E100D6E714 /* API */,
 				BCF58B872066DE4800D6E714 /* Controller */,
 				BCF58B862066DE4300D6E714 /* View */,
 				BCF58B852066DE3D00D6E714 /* Model */,
+				BCF58B9520670AB200D6E714 /* Helpers */,
 				BCF58B842066DCF400D6E714 /* Supporting Files */,
 			);
 			path = "IGN Code Foo 2018 - App";
@@ -155,9 +161,25 @@
 		BCF58B872066DE4800D6E714 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BCF58B882066DF4200D6E714 /* RootViewController.swift */,
+				BCF58B932067014100D6E714 /* HomeController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BCF58B8C2066E2E100D6E714 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B8D2066E76E00D6E714 /* IGNAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BCF58B9520670AB200D6E714 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BCF58B9620670B1B00D6E714 /* Extentions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,9 +316,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF58B892066DF4200D6E714 /* RootViewController.swift in Sources */,
 				BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */,
 				BCF58B8B2066DFA000D6E714 /* Content.swift in Sources */,
+				BCF58B9720670B1B00D6E714 /* Extentions.swift in Sources */,
+				BCF58B8E2066E76E00D6E714 /* IGNAPI.swift in Sources */,
+				BCF58B942067014100D6E714 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
