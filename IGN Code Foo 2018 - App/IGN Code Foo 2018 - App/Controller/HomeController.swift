@@ -10,10 +10,15 @@ import UIKit
 
 class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
+    struct Constants {
+        static let colletionViewCellHeight:CGFloat = 435
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "IGN"
+//        navigationItem.title = "IGN"
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ContentCell.self, forCellWithReuseIdentifier: "cellId")
         
@@ -31,7 +36,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: Constants.colletionViewCellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -46,26 +51,76 @@ class ContentCell: UICollectionViewCell {
         setupviews()
     }
     
+    struct Constants {
+        static let publishLabelFontSize: CGFloat = 14
+        static let titleTextViewFontSize: CGFloat = 20
+        static let descriptionTextViewFontSize: CGFloat = 12
+    }
+    
+    let publishDateLabel: UILabel = {
+       let label = UILabel()
+        label.textColor = UIColor.red
+        label.text = "12 MIN AGO"
+        label.font = .systemFont(ofSize: Constants.publishLabelFontSize, weight: UIFont.Weight.heavy)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let titleTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "Venom's 30th Anniversary Celebrated With Special Variant Covers"
+        textView.textColor = UIColor.black
+        textView.font = .systemFont(ofSize: Constants.titleTextViewFontSize, weight: UIFont.Weight.heavy)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     let thumbnailImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blue
+        imageView.image = UIImage(named: "Venom")
+        imageView.backgroundColor = UIColor.lightGray
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
+    let subtitleTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "Marvel is celebrating Venom's 30th anniversary with special variant comic book covers."
+        textView.textColor = UIColor.lightGray
+        textView.font = .systemFont(ofSize: Constants.descriptionTextViewFontSize)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     let separatorView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     func setupviews() {
+        addSubview(publishDateLabel)
+        addSubview(titleTextView)
         addSubview(thumbnailImageView)
+        addSubview(subtitleTextView)
         addSubview(separatorView)
         
+        
+        //Thumbnail Aspect Ratio constraint
+        addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: thumbnailImageView, attribute: NSLayoutAttribute.width, multiplier: (9/16), constant: 0)])
+        
+        //Vertical Constraints
+        addConstraintsWithFormat(format: "V:|-32-[v0]-[v1]-[v2]-[v3(50)]-[v4(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView,separatorView)
+        
+        //Horizontal contraints
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: publishDateLabel)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: titleTextView)
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
-        addConstraintsWithFormat(format: "V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView,separatorView)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: subtitleTextView)
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: separatorView)
 
     }
