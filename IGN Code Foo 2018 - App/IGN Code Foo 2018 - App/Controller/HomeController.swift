@@ -52,16 +52,16 @@ class ContentCell: UICollectionViewCell {
     }
     
     struct Constants {
-        static let publishLabelFontSize: CGFloat = 14
-        static let titleTextViewFontSize: CGFloat = 20
-        static let descriptionTextViewFontSize: CGFloat = 12
+        static let publishLabelFontSize: CGFloat = 12
+        static let titleTextViewFontSize: CGFloat = 22
+        static let descriptionTextViewFontSize: CGFloat = 14
     }
     
     let publishDateLabel: UILabel = {
        let label = UILabel()
         label.textColor = UIColor.red
         label.text = "12 MIN AGO"
-        label.font = .systemFont(ofSize: Constants.publishLabelFontSize, weight: UIFont.Weight.heavy)
+        label.font = .systemFont(ofSize: Constants.publishLabelFontSize, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -71,7 +71,11 @@ class ContentCell: UICollectionViewCell {
         textView.text = "Venom's 30th Anniversary Celebrated With Special Variant Covers"
         textView.textColor = UIColor.black
         textView.font = .systemFont(ofSize: Constants.titleTextViewFontSize, weight: UIFont.Weight.heavy)
+        textView.isScrollEnabled = false
+        textView.textContainerInset = UIEdgeInsets.zero
+        textView.isSelectable = false
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: UILayoutConstraintAxis.vertical)
         return textView
     }()
     
@@ -91,6 +95,7 @@ class ContentCell: UICollectionViewCell {
         textView.text = "Marvel is celebrating Venom's 30th anniversary with special variant comic book covers."
         textView.textColor = UIColor.lightGray
         textView.font = .systemFont(ofSize: Constants.descriptionTextViewFontSize)
+        textView.isSelectable = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -114,7 +119,7 @@ class ContentCell: UICollectionViewCell {
         addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: thumbnailImageView, attribute: NSLayoutAttribute.width, multiplier: (9/16), constant: 0)])
         
         //Vertical Constraints
-        addConstraintsWithFormat(format: "V:|-32-[v0]-[v1]-[v2]-[v3(50)]-[v4(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView,separatorView)
+        addConstraintsWithFormat(format: "V:|-28-[v0][v1]-[v2]-[v3]-[v4(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView,separatorView)
         
         //Horizontal contraints
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: publishDateLabel)
