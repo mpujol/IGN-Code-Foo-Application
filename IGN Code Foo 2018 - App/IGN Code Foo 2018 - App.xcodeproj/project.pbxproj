@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC2FF7F1206C918100CFD5E1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2FF7F0206C918100CFD5E1 /* Media.xcassets */; };
 		BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B562066D46200D6E714 /* AppDelegate.swift */; };
 		BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5A2066D46200D6E714 /* Main.storyboard */; };
-		BCF58B5E2066D46200D6E714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5D2066D46200D6E714 /* Assets.xcassets */; };
 		BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */; };
 		BCF58B6C2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B6B2066D46200D6E714 /* IGN_Code_Foo_2018___AppTests.swift */; };
 		BCF58B772066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B762066D46200D6E714 /* IGN_Code_Foo_2018___AppUITests.swift */; };
@@ -37,10 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC2FF7F0206C918100CFD5E1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IGN Code Foo 2018 - App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF58B562066D46200D6E714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCF58B5B2066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BCF58B5D2066D46200D6E714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCF58B602066D46200D6E714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCF58B622066D46200D6E714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "IGN Code Foo 2018 - App/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		BCF58B672066D46200D6E714 /* IGN Code Foo 2018 - AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IGN Code Foo 2018 - AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				BCF58B5A2066D46200D6E714 /* Main.storyboard */,
-				BCF58B5D2066D46200D6E714 /* Assets.xcassets */,
+				BC2FF7F0206C918100CFD5E1 /* Media.xcassets */,
 				BCF58B5F2066D46200D6E714 /* LaunchScreen.storyboard */,
 				BCF58B622066D46200D6E714 /* Info.plist */,
 			);
@@ -290,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF58B612066D46200D6E714 /* LaunchScreen.storyboard in Resources */,
-				BCF58B5E2066D46200D6E714 /* Assets.xcassets in Resources */,
+				BC2FF7F1206C918100CFD5E1 /* Media.xcassets in Resources */,
 				BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
