@@ -29,6 +29,33 @@ class ContentCell: BaseCell {
         setupviews()
     }
     
+    var content: Data? {
+        didSet {
+            if let content = content {
+                titleTextView.text = content.metadata.title
+                subtitleTextView.text = content.metadata.description
+                
+                //format or calculate publish date label
+                let publishDateString = content.metadata.publishDate
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                
+                let todaysDate = Date()
+                
+                if let publishDate = dateFormatter.date(from: publishDateString) {
+                    if todaysDate.hours(from: publishDate) > 24 {
+                        dateFormatter.dateStyle = .long
+                        publishDateLabel.text = dateFormatter.string(from: publishDate)
+                    } else {
+                        publishDateLabel.text = todaysDate.offset(from: publishDate)
+                    }
+                }
+            }
+        }
+    }
+    
     struct Constants {
         static let publishLabelFontSize: CGFloat = 12
         static let titleTextViewFontSize: CGFloat = 22
