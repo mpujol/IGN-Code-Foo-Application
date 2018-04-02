@@ -30,8 +30,8 @@ class ContentCell: BaseCell {
     }
     
     struct Constants {
-        static let publishLabelFontSize: CGFloat = 11
-        static let titleTextViewFontSize: CGFloat = 20
+        static let publishLabelFontSize: CGFloat = 12
+        static let titleTextViewFontSize: CGFloat = 22
         static let descriptionTextViewFontSize: CGFloat = 12
         static let sidePadding = 16
     }
@@ -42,6 +42,8 @@ class ContentCell: BaseCell {
         label.text = "12 MIN AGO"
         label.font = .systemFont(ofSize: Constants.publishLabelFontSize, weight: UIFont.Weight.black)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.sizeToFit()
         return label
     }()
     
@@ -54,7 +56,8 @@ class ContentCell: BaseCell {
         textView.isSelectable = false
         textView.textContainerInset = UIEdgeInsets.zero
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: UILayoutConstraintAxis.vertical)
+        textView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.vertical)
+        
         return textView
     }()
     
@@ -110,7 +113,8 @@ class ContentCell: BaseCell {
     
     let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(red: 195, green: 195, blue: 195)
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -150,7 +154,7 @@ class ContentCell: BaseCell {
         
         
         //Vertical Constraints
-        addConstraintsWithFormat(format: "V:|-28-[v0][v1]-[v2]-6-[v3]-[v4(25)]-[v5(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView, openContentButton,separatorView)
+        addConstraintsWithFormat(format: "V:|-38-[v0(10)][v1]-[v2]-6-[v3]-[v4(25)]-[v5(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView, openContentButton,separatorView)
         
         //Horizontal contraints
         addConstraintsWithFormat(format: "H:|-\(Constants.sidePadding)-[v0]-\(Constants.sidePadding)-|", views: publishDateLabel)

@@ -11,7 +11,7 @@ import UIKit
 class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
     struct Constants {
-        static let colletionViewCellHeight:CGFloat = 420
+        static let colletionViewCellHeight:CGFloat = 450
     
     }
     
