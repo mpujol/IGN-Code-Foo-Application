@@ -52,6 +52,10 @@ class ContentCell: BaseCell {
                         publishDateLabel.text = todaysDate.offset(from: publishDate)
                     }
                 }
+                
+                setupThumbnailImage()
+                setupViewLabel()
+                
             }
         }
     }
@@ -61,6 +65,23 @@ class ContentCell: BaseCell {
         static let titleTextViewFontSize: CGFloat = 22
         static let descriptionTextViewFontSize: CGFloat = 12
         static let sidePadding = 16
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = content?.thumbnails.last?.url {
+            
+            thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
+            
+        }
+    }
+    
+    
+    
+    func setupViewLabel() {
+     
+        if let contentId = content?.contentId {
+            commentCountLabel.loadNumberOfViewsForContentID(contentID: contentId)
+        }
     }
     
     let publishDateLabel: UILabel = {
@@ -92,7 +113,7 @@ class ContentCell: BaseCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Venom")
         imageView.backgroundColor = UIColor.lightGray
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

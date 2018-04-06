@@ -71,3 +71,52 @@ extension Date {
         return ""
     }
 }
+
+extension UIImageView {
+    
+    func loadImageUsingURLString(urlString: String) {
+       
+        if let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url) { (data, response, err) in
+                if err != nil {
+                    print(err)
+                    return
+                }
+                DispatchQueue.main.async {
+                    if let data = data {
+                        self.image = UIImage(data: data)
+                    }
+                }
+            }.resume()
+        }
+    }
+}
+
+extension UILabel {
+    func loadNumberOfViewsForContentID(contentID: String) {
+       let commentsBaseURL = "https://ign-apis.herokuapp.com/comments?ids="
+        let urlString = commentsBaseURL + contentID
+        if let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url) { (data, response, err) in
+                if let data = data {
+                    do {
+                        let comment = try JSONDecoder().decode(Comment.self, from: data)
+                        
+                        DispatchQueue.main.async {
+                            self.text = "\(comment.content.last?.commentCount ?? 0)"
+                            
+                        }
+                        
+                    } catch let jsonErr {
+                        print(jsonErr)
+                    }
+                }
+                
+                if let err = err {
+                    print(err.localizedDescription)
+                }
+            }.resume()
+        }
+    }
+}
+

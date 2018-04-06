@@ -37,3 +37,18 @@ struct Thumbnail: Decodable {
     let width: Int
     let height: Int
 }
+
+struct Comment: Decodable {
+    let count: Int
+    let content: [commentMetadata]
+}
+
+struct commentMetadata: Decodable {
+    let id: String
+    let commentCount: Int
+    
+    enum CodingKeys: CodingKey,String {
+        case id
+        case commentCount = "count"
+    }
+}
