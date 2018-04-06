@@ -19,7 +19,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
 
     func fetchContent() {
         
-        guard let url = URL(string: "https://ign-apis.herokuapp.com/content") else { return }
+        guard let url = URL(string: "https://ign-apis.herokuapp.com/content?count=20") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let data = data {
@@ -32,9 +32,6 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
                     print(feed.count)
                     for content in feed.data {
                         self.contents?.append(content)
-                        print(content.metadata.title)
-                        print(content.metadata.contentType)
-
                     }
                     DispatchQueue.main.async {
                         self.collectionView?.reloadData()

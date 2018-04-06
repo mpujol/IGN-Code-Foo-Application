@@ -72,11 +72,25 @@ extension Date {
     }
 }
 
-extension UIImageView {
+let imageCache = NSCache<NSString, UIImage>()
+
+class CustomImageView: UIImageView {
+    
+    var imageUrlString: String?
     
     func loadImageUsingURLString(urlString: String) {
        
+        imageUrlString = urlString
+        
+//        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+            self.image = imageFromCache
+            return
+        }
+        
         if let url = URL(string: urlString) {
+            
             URLSession.shared.dataTask(with: url) { (data, response, err) in
                 if err != nil {
                     print(err)
@@ -84,7 +98,13 @@ extension UIImageView {
                 }
                 DispatchQueue.main.async {
                     if let data = data {
-                        self.image = UIImage(data: data)
+                        if let imageToCache = UIImage(data: data) {
+                            
+                            if self.imageUrlString == urlString {
+                                self.image = imageToCache
+                            }
+                            imageCache.setObject(imageToCache, forKey: urlString as NSString)
+                        }
                     }
                 }
             }.resume()

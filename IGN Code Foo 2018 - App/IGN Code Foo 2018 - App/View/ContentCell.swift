@@ -97,6 +97,8 @@ class ContentCell: BaseCell {
     
     let titleTextView: UITextView = {
         let textView = UITextView()
+        textView.textContainerInset = UIEdgeInsets.zero
+        textView.textContainer.lineFragmentPadding = 0
         textView.text = "Venom's 30th Anniversary Celebrated With Special Variant Covers"
         textView.textColor = UIColor.black
         textView.font = .systemFont(ofSize: Constants.titleTextViewFontSize, weight: UIFont.Weight.black)
@@ -109,8 +111,8 @@ class ContentCell: BaseCell {
         return textView
     }()
     
-    let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    let thumbnailImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "Venom")
         imageView.backgroundColor = UIColor.lightGray
         imageView.contentMode = .scaleAspectFill
@@ -122,12 +124,16 @@ class ContentCell: BaseCell {
     
     let subtitleTextView: UITextView = {
         let textView = UITextView()
+        textView.textContainer.lineBreakMode = .byTruncatingTail
+        textView.textContainerInset = UIEdgeInsets.zero
+        textView.textContainer.lineFragmentPadding = 0
         textView.text = "Marvel is celebrating Venom's 30th anniversary with special variant comic book covers."
         textView.textColor = UIColor(red: 159, green: 159, blue: 159)
         textView.font = .systemFont(ofSize: Constants.descriptionTextViewFontSize, weight: UIFont.Weight.medium)
         textView.isSelectable = false
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
+        
         return textView
     }()
     
