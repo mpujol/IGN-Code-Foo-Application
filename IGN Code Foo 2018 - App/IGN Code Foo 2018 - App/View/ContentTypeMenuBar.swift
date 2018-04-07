@@ -42,12 +42,53 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         backgroundColor = UIColor.white
         
+        setupHorizontalBar()
+  
         let selectedIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+        collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .left)
+    
+    }
+    
+    
+    
+    var horizontalMenuBarLeftAnchorContraint:NSLayoutConstraint? {
+        didSet {
+            layoutIfNeeded()
+        }
+    }
+    
+    func setupHorizontalBar() {
+        
+        let horizontalBarView = UIView()
+        horizontalBarView.backgroundColor = UIColor.red
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(horizontalBarView)
+        
+        horizontalMenuBarLeftAnchorContraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
+        horizontalMenuBarLeftAnchorContraint?.isActive = true
+        horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/4).isActive = true
+        horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        horizontalMenuBarLeftAnchorContraint?.constant = 46.875
+        print("Width is \(horizontalBarView.frame.size.width)")
+    }
+    
+    
+    //MARK: - Collection View Methods
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("item was selected")
+        let x = (CGFloat(indexPath.item) * (frame.width / 2)) + ((frame.width / 4) - (frame.width / 8))
+        horizontalMenuBarLeftAnchorContraint?.constant = x
+        print(x)
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
         
     }
     
-    //MARK: - Collection View Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -108,7 +149,8 @@ class ContentTypeMenuCell: BaseCell {
         addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.width, multiplier: 120/457, constant: 0)])
             
         // Height & Width
-        addConstraintsWithFormat(format: "V:|-13-[v0]-13-|", views: imageView)
+        addConstraintsWithFormat(format: "V:[v0(26)]", views: imageView)
+
             
         // centered
           addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)])

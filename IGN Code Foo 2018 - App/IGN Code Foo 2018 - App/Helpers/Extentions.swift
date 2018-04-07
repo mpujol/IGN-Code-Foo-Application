@@ -82,7 +82,7 @@ class CustomImageView: UIImageView {
        
         imageUrlString = urlString
         
-//        image = nil
+        image = nil
         
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             self.image = imageFromCache

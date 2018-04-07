@@ -32,6 +32,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
                     print(feed.count)
                     for content in feed.data {
                         self.contents?.append(content)
+                        print(content.metadata.publishDate)
                     }
                     DispatchQueue.main.async {
                         self.collectionView?.reloadData()

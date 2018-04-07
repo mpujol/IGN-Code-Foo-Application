@@ -160,7 +160,7 @@ class ContentCell: BaseCell {
     
     let commentCountLabel:UILabel = {
         let label = UILabel()
-        label.text = "24"
+        label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
