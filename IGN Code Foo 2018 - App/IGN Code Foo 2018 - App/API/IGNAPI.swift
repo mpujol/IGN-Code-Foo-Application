@@ -17,20 +17,25 @@ class ApiService: NSObject {
         case comments = "https://ign-apis.herokuapp.com/comments"
     }
     
-    func fetchContent() {
+    func fetchContent(completion: @escaping ([Data]) -> ()) {
         
-        guard let url = URL(string: URLFeed.content.rawValue) else { return }
+        guard let url = URL(string: "https://ign-apis.herokuapp.com/content?count=20") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let data = data {
                 do {
                     let feed = try JSONDecoder().decode(Feed.self, from: data)
                     
-                    print(feed.count)
-                    for content in feed.data {
-                        print(content.metadata.title)
-                    }
+                    var contents = [Data]()
                     
+//                    print(feed.count)
+                    for content in feed.data {
+                        contents.append(content)
+//                        print(content.metadata.publishDate)
+                    }
+                    DispatchQueue.main.async {
+                        completion(contents)
+                    }
                 } catch let jsonError {
                     print(jsonError)
                 }
@@ -41,5 +46,6 @@ class ApiService: NSObject {
             }
             
             }.resume()
+        
     }
 }

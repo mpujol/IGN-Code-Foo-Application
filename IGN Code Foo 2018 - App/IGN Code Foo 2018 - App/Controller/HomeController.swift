@@ -15,54 +15,22 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     
     }
 
-    var contents: [Data]?
-
-    func fetchContent() {
-        
-        guard let url = URL(string: "https://ign-apis.herokuapp.com/content?count=20") else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            if let data = data {
-                do {
-                    let feed = try JSONDecoder().decode(Feed.self, from: data)
-                    
-                    
-                    self.contents = [Data]()
-                    
-                    print(feed.count)
-                    for content in feed.data {
-                        self.contents?.append(content)
-                        print(content.metadata.publishDate)
-                    }
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadData()
-                    }
-                } catch let jsonError {
-                    print(jsonError)
-                }
-            }
-            
-            if let err = err {
-                print(err.localizedDescription)
-            }
-            
-        }.resume()
-    }
+    let cellId = "CellId"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isTranslucent = false
        
-        fetchContent()
-        
         setupContentTypeMenuBar()
         setupCollectionView()
         
     }
     
-    let contentTypeMenuBar: ContentTypeMenuBar = {
+    lazy var contentTypeMenuBar: ContentTypeMenuBar = {
         let menuBar = ContentTypeMenuBar()
+        menuBar.homeController = self
         menuBar.translatesAutoresizingMaskIntoConstraints = false
         return menuBar
     }()
@@ -70,12 +38,18 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     
     func setupCollectionView() {
         
+        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+        }
+        
         collectionView?.backgroundColor = UIColor.white
         
-        collectionView?.register(ContentCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        
+        collectionView?.isPagingEnabled = true
         
     }
     
@@ -86,27 +60,40 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: contentTypeMenuBar)
     }
     
+    func scrollToMenuIndex(menuIndex: Int) {
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView?.scrollToItem(at: indexPath , at: [], animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contents?.count ?? 0
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ContentCell
-        
-        cell.content = contents?[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: Constants.colletionViewCellHeight)
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        contentTypeMenuBar.horizontalMenuBarLeftAnchorContraint?.constant = (scrollView.contentOffset.x / 2) + ContentTypeMenuBar.Constants.HorizontalMenuBarLeftOffset
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = targetContentOffset.pointee.x/view.frame.width
+        let indexPath = IndexPath(row: Int(index), section: 0)
+        contentTypeMenuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+       
+    }
+    
 }
 
 

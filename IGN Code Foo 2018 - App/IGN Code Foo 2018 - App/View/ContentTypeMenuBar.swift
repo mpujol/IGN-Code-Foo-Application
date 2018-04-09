@@ -31,6 +31,12 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
     
     let cellId = "cellId"
     let imageNames = ["ContentTypeArticles","ContentTypeVideos"]
+    var homeController: HomeController?
+    
+    
+    struct Constants {
+        static let HorizontalMenuBarLeftOffset:CGFloat = 46.875
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,7 +66,7 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
     func setupHorizontalBar() {
         
         let horizontalBarView = UIView()
-        horizontalBarView.backgroundColor = UIColor.red
+        horizontalBarView.backgroundColor = UIColor(red: 191, green: 19, blue: 19)
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(horizontalBarView)
@@ -70,22 +76,16 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/4).isActive = true
         horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        horizontalMenuBarLeftAnchorContraint?.constant = 46.875
-        print("Width is \(horizontalBarView.frame.size.width)")
+        horizontalMenuBarLeftAnchorContraint?.constant = Constants.HorizontalMenuBarLeftOffset  
     }
     
+   
     
     //MARK: - Collection View Methods
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item was selected")
-        let x = (CGFloat(indexPath.item) * (frame.width / 2)) + ((frame.width / 4) - (frame.width / 8))
-        horizontalMenuBarLeftAnchorContraint?.constant = x
-        print(x)
         
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
         
     }
     

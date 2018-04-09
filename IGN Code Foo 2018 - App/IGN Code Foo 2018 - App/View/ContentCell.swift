@@ -161,6 +161,7 @@ class ContentCell: BaseCell {
     let commentCountLabel:UILabel = {
         let label = UILabel()
         label.text = "0"
+        label.textColor = UIColor(red: 53, green: 137, blue: 181)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
