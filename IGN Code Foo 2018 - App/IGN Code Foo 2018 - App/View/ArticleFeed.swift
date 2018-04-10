@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCell: BaseCell,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -22,13 +22,18 @@ class FeedCell: BaseCell,UICollectionViewDataSource, UICollectionViewDelegate, U
     
     var contents: [Data]?
     
-    let cellId = "cellId"
+    var homeController: HomeController?
     
+    
+    let cellId = "cellId"
+        
     func fetchContent() {
-        ApiService.shared.fetchContent { (content: [Data]) in
+        
+        ApiService.shared.fetchArticleFeed { (content: [Data]) in
             self.contents = content
             self.collectionView.reloadData()
         }
+        
     }
     
     override func setupViews() {
@@ -52,12 +57,41 @@ class FeedCell: BaseCell,UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ContentCell
-
         cell.content = contents?[indexPath.item]
-
+        
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let currentCell = collectionView.cellForItem(at: indexPath) as? ContentCell {
+            
+            if let metadata = currentCell.content?.metadata {
+                print(metadata.slug)
+            }
+            
+            
+            if let url = URL(string: "http://www.ign.com/videos/2018/03/27/far-cry-5-walkthrough-story-mission-the-cleansing") {
+                
+                var webViewVC = ContentWebViewController()
+                webViewVC.contentURL = url
+                
+                var topVC = UIApplication.shared.keyWindow?.rootViewController
+                while((topVC!.presentedViewController) != nil) {
+                    topVC = topVC!.presentedViewController
+                }
+                
+                topVC?.present(webViewVC, animated: true, completion: nil)
+                
 
+                
+            }
+            
+            
+            
+            
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: HomeController.Constants.colletionViewCellHeight)
     }

@@ -149,7 +149,7 @@ class ContentTypeMenuCell: BaseCell {
         addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.width, multiplier: 120/457, constant: 0)])
             
         // Height & Width
-        addConstraintsWithFormat(format: "V:[v0(26)]", views: imageView)
+        addConstraintsWithFormat(format: "V:[v0(24)]", views: imageView)
 
             
         // centered

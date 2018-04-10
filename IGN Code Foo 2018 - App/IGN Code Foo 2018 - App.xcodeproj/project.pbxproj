@@ -10,7 +10,9 @@
 		BC26AAFF2071B67A001FE9EB /* ContentTypeMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26AAFE2071B67A001FE9EB /* ContentTypeMenuBar.swift */; };
 		BC2FF7F1206C918100CFD5E1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2FF7F0206C918100CFD5E1 /* Media.xcassets */; };
 		BC6D8BA6206EEE9200A8D976 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D8BA5206EEE9200A8D976 /* ContentCell.swift */; };
-		BC786F1C207979740068DEAA /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC786F1B207979740068DEAA /* FeedCell.swift */; };
+		BC786F1C207979740068DEAA /* ArticleFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC786F1B207979740068DEAA /* ArticleFeed.swift */; };
+		BCA41496207C418800AA941A /* VideoFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA41495207C418800AA941A /* VideoFeed.swift */; };
+		BCA41499207C698C00AA941A /* ContentWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA41498207C698C00AA941A /* ContentWebViewController.swift */; };
 		BCECD849207298D60069FB61 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = BCECD848207298D60069FB61 /* sampleData.json */; };
 		BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58B562066D46200D6E714 /* AppDelegate.swift */; };
 		BCF58B5C2066D46200D6E714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF58B5A2066D46200D6E714 /* Main.storyboard */; };
@@ -44,7 +46,9 @@
 		BC26AAFE2071B67A001FE9EB /* ContentTypeMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTypeMenuBar.swift; sourceTree = "<group>"; };
 		BC2FF7F0206C918100CFD5E1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BC6D8BA5206EEE9200A8D976 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
-		BC786F1B207979740068DEAA /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		BC786F1B207979740068DEAA /* ArticleFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFeed.swift; sourceTree = "<group>"; };
+		BCA41495207C418800AA941A /* VideoFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeed.swift; sourceTree = "<group>"; };
+		BCA41498207C698C00AA941A /* ContentWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWebViewController.swift; sourceTree = "<group>"; };
 		BCECD848207298D60069FB61 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		BCF58B532066D46200D6E714 /* IGN Code Foo 2018 - App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IGN Code Foo 2018 - App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF58B562066D46200D6E714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +169,9 @@
 			children = (
 				BC6D8BA5206EEE9200A8D976 /* ContentCell.swift */,
 				BC26AAFE2071B67A001FE9EB /* ContentTypeMenuBar.swift */,
-				BC786F1B207979740068DEAA /* FeedCell.swift */,
+				BC786F1B207979740068DEAA /* ArticleFeed.swift */,
+				BCA41495207C418800AA941A /* VideoFeed.swift */,
+				BCA41498207C698C00AA941A /* ContentWebViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,11 +336,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF58B572066D46200D6E714 /* AppDelegate.swift in Sources */,
+				BCA41499207C698C00AA941A /* ContentWebViewController.swift in Sources */,
 				BCF58B8B2066DFA000D6E714 /* Content.swift in Sources */,
+				BCA41496207C418800AA941A /* VideoFeed.swift in Sources */,
 				BCF58B9720670B1B00D6E714 /* Extentions.swift in Sources */,
 				BC6D8BA6206EEE9200A8D976 /* ContentCell.swift in Sources */,
 				BC26AAFF2071B67A001FE9EB /* ContentTypeMenuBar.swift in Sources */,
-				BC786F1C207979740068DEAA /* FeedCell.swift in Sources */,
+				BC786F1C207979740068DEAA /* ArticleFeed.swift in Sources */,
 				BCF58B8E2066E76E00D6E714 /* IGNAPI.swift in Sources */,
 				BCF58B942067014100D6E714 /* HomeController.swift in Sources */,
 			);

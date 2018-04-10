@@ -29,6 +29,7 @@ class ContentCell: BaseCell {
         setupviews()
     }
     
+    
     var content: Data? {
         didSet {
             if let content = content {
@@ -51,6 +52,17 @@ class ContentCell: BaseCell {
                     } else {
                         publishDateLabel.text = todaysDate.offset(from: publishDate)
                     }
+                }
+                
+                
+                
+                switch content.metadata.contentType {
+                case "article":
+                    openContentButton.setImage(UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+                case "video":
+                    openContentButton.setImage(UIImage(named: "Watch")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal) 
+                default:
+                    break
                 }
                 
                 setupThumbnailImage()

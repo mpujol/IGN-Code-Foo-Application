@@ -15,14 +15,16 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     
     }
 
-    let cellId = "CellId"
-    
+    let articleCellId = "articleCellId"
+    let videoCellId = "videoCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isTranslucent = false
        
+        
+        
         setupContentTypeMenuBar()
         setupCollectionView()
         
@@ -44,7 +46,8 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         
         collectionView?.backgroundColor = UIColor.white
         
-        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ArticleFeed.self, forCellWithReuseIdentifier: articleCellId)
+        collectionView?.register(VideoFeed.self, forCellWithReuseIdentifier: videoCellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
@@ -70,13 +73,24 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        
+        var identifier: String = ""
+        
+        if indexPath.item == 0 {
+            identifier = articleCellId
+        } else if indexPath.item == 1 {
+            identifier = videoCellId
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        
+        
         
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: view.frame.width, height: view.frame.height - 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
