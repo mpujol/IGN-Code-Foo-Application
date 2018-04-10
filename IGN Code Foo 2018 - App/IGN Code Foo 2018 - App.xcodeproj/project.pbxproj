@@ -92,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCA4149C207C991C00AA941A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCA41498207C698C00AA941A /* ContentWebViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		BCF58B4A2066D46200D6E714 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +125,7 @@
 			children = (
 				BCF58B562066D46200D6E714 /* AppDelegate.swift */,
 				BCF58B8C2066E2E100D6E714 /* API */,
+				BCA4149C207C991C00AA941A /* ViewController */,
 				BCF58B872066DE4800D6E714 /* Controller */,
 				BCF58B862066DE4300D6E714 /* View */,
 				BCF58B852066DE3D00D6E714 /* Model */,
@@ -171,7 +180,6 @@
 				BC26AAFE2071B67A001FE9EB /* ContentTypeMenuBar.swift */,
 				BC786F1B207979740068DEAA /* ArticleFeed.swift */,
 				BCA41495207C418800AA941A /* VideoFeed.swift */,
-				BCA41498207C698C00AA941A /* ContentWebViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

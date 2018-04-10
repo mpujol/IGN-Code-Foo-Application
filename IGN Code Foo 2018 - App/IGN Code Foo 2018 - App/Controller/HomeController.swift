@@ -22,13 +22,18 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isTranslucent = false
-       
-        
         
         setupContentTypeMenuBar()
         setupCollectionView()
         
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let height: CGFloat = 50
+//        let bounds = self.navigationController!.navigationBar.bounds
+//        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
+//    }
     
     lazy var contentTypeMenuBar: ContentTypeMenuBar = {
         let menuBar = ContentTypeMenuBar()
@@ -61,6 +66,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         view.addSubview(contentTypeMenuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: contentTypeMenuBar)
         view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: contentTypeMenuBar)
+        
     }
     
     func scrollToMenuIndex(menuIndex: Int) {

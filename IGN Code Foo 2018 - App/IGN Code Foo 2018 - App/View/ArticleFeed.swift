@@ -69,10 +69,9 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
                 print(metadata.slug)
             }
             
-            
             if let url = URL(string: "http://www.ign.com/videos/2018/03/27/far-cry-5-walkthrough-story-mission-the-cleansing") {
                 
-                var webViewVC = ContentWebViewController()
+                let webViewVC = ContentWebViewController()
                 webViewVC.contentURL = url
                 
                 var topVC = UIApplication.shared.keyWindow?.rootViewController
@@ -82,12 +81,7 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
                 
                 topVC?.present(webViewVC, animated: true, completion: nil)
                 
-
-                
             }
-            
-            
-            
             
         }
     }

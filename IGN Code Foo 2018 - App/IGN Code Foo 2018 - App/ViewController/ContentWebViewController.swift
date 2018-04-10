@@ -14,7 +14,7 @@ class ContentWebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
        
-        
+        self.view.backgroundColor = .black
         
         setUpViews()
         
@@ -51,7 +51,7 @@ class ContentWebViewController: UIViewController, UIWebViewDelegate {
         self.view.addSubview(dismissButton)
         
         self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: webView)
-        self.view.addConstraintsWithFormat(format: "V:|-[v0]-[v1(60)]-|", views: webView,dismissButton)
+        self.view.addConstraintsWithFormat(format: "V:|-[v0][v1(30)]-|", views: webView,dismissButton)
         
         self.view.addConstraints([NSLayoutConstraint(item: dismissButton, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0.5, constant: 0)])
         self.view.addConstraints([NSLayoutConstraint(item: dismissButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)])

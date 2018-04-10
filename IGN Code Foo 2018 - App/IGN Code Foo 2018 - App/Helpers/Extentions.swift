@@ -93,7 +93,6 @@ class CustomImageView: UIImageView {
             
             URLSession.shared.dataTask(with: url) { (data, response, err) in
                 if err != nil {
-                    print(err)
                     return
                 }
                 DispatchQueue.main.async {
