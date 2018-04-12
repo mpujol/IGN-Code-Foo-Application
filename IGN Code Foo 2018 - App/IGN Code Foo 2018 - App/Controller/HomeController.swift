@@ -22,6 +22,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = .white
         
         setupContentTypeMenuBar()
         setupCollectionView()

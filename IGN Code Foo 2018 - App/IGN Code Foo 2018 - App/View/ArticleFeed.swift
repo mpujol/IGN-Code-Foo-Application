@@ -26,7 +26,8 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     
     
     let cellId = "cellId"
-        
+    let sectionHeaderId = "sectionHeaderId"
+    
     func fetchContent() {
         
         ApiService.shared.fetchArticleFeed { (content: [Data]) in
@@ -47,6 +48,7 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
         
     }
     
@@ -65,25 +67,32 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let currentCell = collectionView.cellForItem(at: indexPath) as? ContentCell {
             
-            if let metadata = currentCell.content?.metadata {
-                print(metadata.slug)
-            }
-            
-            if let url = URL(string: "http://www.ign.com/videos/2018/03/27/far-cry-5-walkthrough-story-mission-the-cleansing") {
+            if let content = currentCell.content {
                 
-                let webViewVC = ContentWebViewController()
-                webViewVC.contentURL = url
-                
-                var topVC = UIApplication.shared.keyWindow?.rootViewController
-                while((topVC!.presentedViewController) != nil) {
-                    topVC = topVC!.presentedViewController
+                if let url = URL(string: Helper.getContentWebURLString(content: content)) {
+                    print(Helper.getContentWebURLString(content: content))
+                    let webViewVC = ContentWebViewController()
+                    webViewVC.contentURL = url
+                    
+                    //Find the navigation controller in rootViewController to push the new content
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let rootVC = appDelegate.window?.rootViewController as? UINavigationController
+                    rootVC?.pushViewController(webViewVC, animated: true)
+                    
                 }
-                
-                topVC?.present(webViewVC, animated: true, completion: nil)
-                
             }
-            
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeaderId, for: indexPath) as! HeaderCollectionReusableView
+        return reusableView
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height:36)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

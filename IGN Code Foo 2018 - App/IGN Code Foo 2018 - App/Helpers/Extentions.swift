@@ -70,7 +70,36 @@ extension Date {
         if seconds(from: date) > 0 { return "\(seconds(from: date)) SECONDS AGO" }
         return ""
     }
+    //for the formatting of the contentURL in UIWebView
+    var year: String  { return Formatter.year.string(from: self) }
+    var month:  String      { return Formatter.month.string(from: self) }
+    var day: String     { return Formatter.day.string(from: self) }
 }
+
+extension Formatter {
+    static let year: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y"
+        return formatter
+    }()
+    
+    static let month: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM"
+        return formatter
+    }()
+
+    static let day: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        return formatter
+    }()
+}
+
+extension Date {
+
+}
+
 
 let imageCache = NSCache<NSString, UIImage>()
 
