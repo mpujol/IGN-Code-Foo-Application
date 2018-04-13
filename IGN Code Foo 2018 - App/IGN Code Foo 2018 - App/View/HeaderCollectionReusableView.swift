@@ -34,7 +34,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         
         addSubview(sectionHeaderImageView)
         addSubview(separatorView)
-        
+        backgroundColor = .white
         addConstraintsWithFormat(format: "V:|[v0][v1(1)]|", views: sectionHeaderImageView,separatorView)
 //        addConstraintsWithFormat(format: "H:|-[v0]-|", views: sectionHeaderImageView)
                 addConstraintsWithFormat(format: "H:|-\(ContentCell.Constants.sidePadding)-[v0]-\(ContentCell.Constants.sidePadding)-|", views: separatorView)

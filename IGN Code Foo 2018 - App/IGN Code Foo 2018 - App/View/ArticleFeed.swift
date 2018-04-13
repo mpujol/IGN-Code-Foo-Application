@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     lazy var collectionView: UICollectionView = {
@@ -17,30 +18,56 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
         cv.backgroundColor = .white
         cv.dataSource = self
         cv.delegate = self
+        cv.refreshControl = UIRefreshControl()
+        cv.refreshControl?.layer.zPosition = -1
+        cv.refreshControl?.tintColor = UIColor(red: 191, green: 19, blue: 19)
+        cv.refreshControl?.addTarget(self, action: #selector(self.reloadContent), for: .valueChanged)
+        cv.alwaysBounceVertical = true
         return cv
     }()
     
     var contents: [Data]?
-    
+    var currentStartIndex: Int = 0
     var homeController: HomeController?
-    
+    var delegate: contentCellDelegate?
     
     let cellId = "cellId"
     let sectionHeaderId = "sectionHeaderId"
     
-    func fetchContent() {
-        
-        ApiService.shared.fetchArticleFeed { (content: [Data]) in
-            self.contents = content
+    func fetchFeed() {
+
+        ApiService.shared.fetchArticleFeedAt(startIndex: currentStartIndex) { (content:[Data]) in
+            
+            if self.contents == nil {
+                self.contents = content
+            } else {
+                for singleContent in content {
+                    self.contents?.append(singleContent)
+                }
+            }
             self.collectionView.reloadData()
+            self.currentStartIndex += ApiService.URLFeed.defaultContentCount
         }
-        
+    }
+    
+    
+    @objc func reloadContent() {
+        self.currentStartIndex = 0
+        self.contents = nil
+        fetchFeed()
+        stopRefreshControl()
+    }
+    
+    func stopRefreshControl() {
+        self.collectionView.refreshControl?.endRefreshing()
     }
     
     override func setupViews() {
         super.setupViews()
         
-        fetchContent()
+        fetchFeed()
+        
+        
         
         addSubview(collectionView)
         
@@ -61,28 +88,34 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ContentCell
         cell.content = contents?[indexPath.item]
         
+        cell.openContentButton.addTarget(self, action: #selector(didSelectOpenContentButtonfor(sender:)), for: UIControlEvents.touchUpInside)
+        cell.openContentButton.tag = indexPath.item
+        
+        if let contentCount = self.contents?.count {
+         
+            if indexPath.item == contentCount - 1 {
+                self.fetchFeed()
+            }
+            
+        }
+        
         return cell
+    }
+    
+    @objc func didSelectOpenContentButtonfor(sender:UIButton) {
+        let buttonTag = sender.tag
+        if let content = contents?[buttonTag] {
+            Helper.openWebViewFor(content: content)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let currentCell = collectionView.cellForItem(at: indexPath) as? ContentCell {
-            
             if let content = currentCell.content {
-                
-                if let url = URL(string: Helper.getContentWebURLString(content: content)) {
-                    print(Helper.getContentWebURLString(content: content))
-                    let webViewVC = ContentWebViewController()
-                    webViewVC.contentURL = url
-                    
-                    //Find the navigation controller in rootViewController to push the new content
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    let rootVC = appDelegate.window?.rootViewController as? UINavigationController
-                    rootVC?.pushViewController(webViewVC, animated: true)
-                    
+                    Helper.openWebViewFor(content: content)
                 }
             }
         }
-    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
@@ -103,5 +136,6 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
         return 0
     }
     
-    
 }
+
+

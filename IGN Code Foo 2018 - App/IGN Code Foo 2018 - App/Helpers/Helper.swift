@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Helper {
     static func getContentWebURLString(content: Data) -> String {
@@ -32,4 +33,17 @@ class Helper {
         
         return "\(baseURLString)\(contentString)\(dateString)\(content.metadata.slug)"
     }
+    
+    static func openWebViewFor(content: Data) {
+        if let url = URL(string: Helper.getContentWebURLString(content: content)) {
+            let webViewVC = ContentWebViewController()
+            webViewVC.contentURL = url
+            
+            //Find the navigation controller in rootViewController to push the new content
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let rootVC = appDelegate.window?.rootViewController as? UINavigationController
+            rootVC?.pushViewController(webViewVC, animated: true)
+        }
+    }
+    
 }

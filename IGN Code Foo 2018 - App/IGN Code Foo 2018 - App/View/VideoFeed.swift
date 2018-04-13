@@ -10,13 +10,19 @@ import UIKit
 
 class VideoFeed: ArticleFeed {
 
-    override func fetchContent() {
+    override func fetchFeed() {
         
-        ApiService.shared.fetchVideoFeed { (content: [Data]) in
-            self.contents = content
+        ApiService.shared.fetchVideoFeedAt(StartIndex: currentStartIndex) { (content:[Data]) in
+            if self.contents == nil {
+                self.contents = content
+            } else {
+                for singleContent in content {
+                    self.contents?.append(singleContent)
+                }
+            }
             self.collectionView.reloadData()
+            self.currentStartIndex += ApiService.URLFeed.defaultContentCount
         }
         
     }
-    
 }

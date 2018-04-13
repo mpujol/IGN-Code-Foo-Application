@@ -15,23 +15,28 @@ class ApiService: NSObject {
     struct URLFeed {
         static let content = "https://ign-apis.herokuapp.com/content?count=20"
         static let comments = "https://ign-apis.herokuapp.com/comments"
+        static let defaultContentCount:Int = 20
     }
     
-    func fetchArticleFeed(completion: @escaping ([Data]) -> ()) {
-        fetchContent(type: "article") { (content) in
+    func fetchArticleFeedAt(startIndex: Int, completion: @escaping ([Data]) -> ()) {
+        fetchContent(type: "article",startIndex: startIndex) { (content) in
             completion(content)
         }
     }
     
-    func fetchVideoFeed(completion: @escaping ([Data]) -> ()) {
-        fetchContent(type: "video") { (content) in
+    func fetchVideoFeedAt(StartIndex: Int, completion: @escaping ([Data]) -> ()) {
+        fetchContent(type: "video", startIndex: StartIndex) { (content) in
         completion(content)
     }
     }
     
-    func fetchContent(type: String, completion: @escaping ([Data]) -> ()) {
+    func fetchContent(type: String, startIndex:Int, completion: @escaping ([Data]) -> ()) {
         
-        guard let url = URL(string: URLFeed.content) else { return }
+        guard let baseURL = URL(string: URLFeed.content) else { return }
+        
+        let query: [String: String] = ["startIndex":"\(startIndex)","count":"\(URLFeed.defaultContentCount)"]
+        
+        guard let url = baseURL.withQueries(query) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let data = data {

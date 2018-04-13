@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol contentCellDelegate {
+    func didSelectContentButtonfor(url: URL)
+}
+
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +33,7 @@ class ContentCell: BaseCell {
         setupviews()
     }
     
+    var delegate: contentCellDelegate?
     
     var content: Data? {
         didSet {
@@ -117,6 +122,7 @@ class ContentCell: BaseCell {
         textView.isScrollEnabled = false
         textView.isSelectable = false
         textView.textContainerInset = UIEdgeInsets.zero
+        textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.vertical)
         
@@ -142,6 +148,7 @@ class ContentCell: BaseCell {
         textView.text = "Marvel is celebrating Venom's 30th anniversary with special variant comic book covers."
         textView.textColor = UIColor(red: 159, green: 159, blue: 159)
         textView.font = .systemFont(ofSize: Constants.descriptionTextViewFontSize, weight: UIFont.Weight.medium)
+        textView.isUserInteractionEnabled = false
         textView.isSelectable = false
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -156,9 +163,9 @@ class ContentCell: BaseCell {
         button.tintColor = UIColor(red: 193, green: 194, blue: 199)
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
+    
     
     let commentButton: UIButton = {
         let button = UIButton()
@@ -196,6 +203,7 @@ class ContentCell: BaseCell {
         addSubview(commentButton)
         addSubview(commentCountLabel)
         
+        backgroundColor = .white
         
         //Thumbnail Aspect Ratio constraint
         addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: thumbnailImageView, attribute: NSLayoutAttribute.width, multiplier: (9/16), constant: 0)])
