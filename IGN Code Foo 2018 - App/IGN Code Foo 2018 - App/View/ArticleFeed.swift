@@ -13,7 +13,7 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-       let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.backgroundColor = .white
         cv.dataSource = self
@@ -29,7 +29,6 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     var contents: [Data]?
     var currentStartIndex: Int = 0
     var homeController: HomeController?
-    var delegate: contentCellDelegate?
     
     let cellId = "cellId"
     let sectionHeaderId = "sectionHeaderId"
@@ -37,7 +36,6 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     func fetchFeed() {
 
         ApiService.shared.fetchArticleFeedAt(startIndex: currentStartIndex) { (content:[Data]) in
-            
             if self.contents == nil {
                 self.contents = content
             } else {
@@ -49,7 +47,6 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
             self.currentStartIndex += ApiService.URLFeed.defaultContentCount
         }
     }
-    
     
     @objc func reloadContent() {
         self.currentStartIndex = 0
@@ -64,19 +61,12 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     
     override func setupViews() {
         super.setupViews()
-        
         fetchFeed()
-        
-        
-        
         addSubview(collectionView)
-        
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
-        
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,21 +74,15 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ContentCell
         cell.content = contents?[indexPath.item]
-        
         cell.openContentButton.addTarget(self, action: #selector(didSelectOpenContentButtonfor(sender:)), for: UIControlEvents.touchUpInside)
         cell.openContentButton.tag = indexPath.item
-        
         if let contentCount = self.contents?.count {
-         
             if indexPath.item == contentCount - 1 {
                 self.fetchFeed()
             }
-            
         }
-        
         return cell
     }
     
@@ -129,7 +113,8 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: HomeController.Constants.colletionViewCellHeight)
+        
+           return CGSize(width: frame.width, height: HomeController.Constants.colletionViewCellHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

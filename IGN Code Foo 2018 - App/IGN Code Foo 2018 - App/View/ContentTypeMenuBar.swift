@@ -17,7 +17,6 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.dataSource = self
         cv.delegate = self
-        
         //add a drop shadow
         cv.layer.shadowColor = UIColor.black.cgColor
         cv.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -40,19 +39,14 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         collectionView.register(ContentTypeMenuCell.self, forCellWithReuseIdentifier: cellId)
-        
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         backgroundColor = UIColor.white
-        
         setupHorizontalBar()
-  
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .left)
-    
     }
     
     
@@ -68,9 +62,7 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
         let horizontalBarView = UIView()
         horizontalBarView.backgroundColor = UIColor(red: 191, green: 19, blue: 19)
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
-        
         addSubview(horizontalBarView)
-        
         horizontalMenuBarLeftAnchorContraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
         horizontalMenuBarLeftAnchorContraint?.isActive = true
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -84,9 +76,7 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
     //MARK: - Collection View Methods
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,11 +85,8 @@ class ContentTypeMenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentTypeMenuCell
-        
-        
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = UIColor(red: 188, green: 188, blue: 188)
-        
         return cell
     }
     
@@ -150,7 +137,6 @@ class ContentTypeMenuCell: BaseCell {
             
         // Height & Width
         addConstraintsWithFormat(format: "V:[v0(24)]", views: imageView)
-
             
         // centered
           addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)])

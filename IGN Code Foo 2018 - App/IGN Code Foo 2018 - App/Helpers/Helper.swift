@@ -29,8 +29,6 @@ class Helper {
             dateString = "\(publishDate.year)/\(publishDate.month)/\(publishDate.day)/"
             
         }
-        
-        
         return "\(baseURLString)\(contentString)\(dateString)\(content.metadata.slug)"
     }
     

@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol contentCellDelegate {
-    func didSelectContentButtonfor(url: URL)
-}
-
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +28,7 @@ class ContentCell: BaseCell {
         super.init(frame: frame)
         setupviews()
     }
-    
-    var delegate: contentCellDelegate?
-    
+        
     var content: Data? {
         didSet {
             if let content = content {
@@ -59,8 +53,6 @@ class ContentCell: BaseCell {
                     }
                 }
                 
-                
-                
                 switch content.metadata.contentType {
                 case "article":
                     openContentButton.setImage(UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
@@ -69,10 +61,8 @@ class ContentCell: BaseCell {
                 default:
                     break
                 }
-                
                 setupThumbnailImage()
                 setupViewLabel()
-                
             }
         }
     }
@@ -80,24 +70,22 @@ class ContentCell: BaseCell {
     struct Constants {
         static let publishLabelFontSize: CGFloat = 12
         static let titleTextViewFontSize: CGFloat = 22
+        static let commentCountLabelFontSize: CGFloat = 14
         static let descriptionTextViewFontSize: CGFloat = 12
         static let sidePadding = 16
     }
     
     func setupThumbnailImage() {
         if let thumbnailImageUrl = content?.thumbnails.last?.url {
-            
             thumbnailImageView.loadImageUsingURLString(urlString: thumbnailImageUrl)
-            
         }
     }
     
-    
-    
     func setupViewLabel() {
-     
         if let contentId = content?.contentId {
-            commentCountLabel.loadNumberOfViewsForContentID(contentID: contentId)
+            ApiService.shared.loadNumberOfViewsForContentID(contentID: contentId, completion: { (commentCount: String) in
+                self.commentCountLabel.text = commentCount
+            })
         }
     }
     
@@ -180,7 +168,9 @@ class ContentCell: BaseCell {
     let commentCountLabel:UILabel = {
         let label = UILabel()
         label.text = "0"
+        label.font = .systemFont(ofSize: Constants.commentCountLabelFontSize, weight: UIFont.Weight.medium)
         label.textColor = UIColor(red: 53, green: 137, blue: 181)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -194,6 +184,7 @@ class ContentCell: BaseCell {
     }()
     
     func setupviews() {
+        
         addSubview(publishDateLabel)
         addSubview(titleTextView)
         addSubview(thumbnailImageView)
@@ -202,35 +193,34 @@ class ContentCell: BaseCell {
         addSubview(openContentButton)
         addSubview(commentButton)
         addSubview(commentCountLabel)
-        
+
         backgroundColor = .white
-        
+
         //Thumbnail Aspect Ratio constraint
         addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: thumbnailImageView, attribute: NSLayoutAttribute.width, multiplier: (9/16), constant: 0)])
-        
+
         //openContentButton Aspect Ratio Constraint
         addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.width, multiplier: (120/457), constant: 0)])
-        
+
         //commentButton Aspect Ratio Contraint
         addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: commentButton, attribute: NSLayoutAttribute.width, multiplier: (120/457), constant: 0)])
-        
+
         //commmentButton height constraint
         addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)])
-        
+
         //commentButton vertical location
         addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)])
         addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)])
-        
+
         //commentCountLabel vertical Location
         addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)])
         addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)])
-        
+
         addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: commentButton, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)])
-        
-        
+
         //Vertical Constraints
-        addConstraintsWithFormat(format: "V:|-38-[v0(10)][v1]-[v2]-6-[v3]-[v4(25)]-[v5(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView, openContentButton,separatorView)
-        
+        addConstraintsWithFormat(format: "V:|-28-[v0(10)][v1]-[v2]-6-[v3]-[v4(25)]-[v5(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView, openContentButton,separatorView)
+
         //Horizontal contraints
         addConstraintsWithFormat(format: "H:|-\(Constants.sidePadding)-[v0]-\(Constants.sidePadding)-|", views: publishDateLabel)
         addConstraintsWithFormat(format: "H:|-\(Constants.sidePadding)-[v0]-\(Constants.sidePadding)-|", views: titleTextView)
@@ -239,7 +229,6 @@ class ContentCell: BaseCell {
         addConstraintsWithFormat(format: "H:|-\(Constants.sidePadding)-[v0]-\(Constants.sidePadding)-|", views: separatorView)
         addConstraintsWithFormat(format: "H:|-\(Constants.sidePadding)-[v0]", views: openContentButton)
         addConstraintsWithFormat(format: "H:[v0]-[v1]-\(Constants.sidePadding)-|", views: commentButton,commentCountLabel)
-        
         
     }
     

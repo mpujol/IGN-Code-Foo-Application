@@ -16,11 +16,9 @@ class ContentWebViewController: UIViewController, UIWebViewDelegate {
        
         self.view.backgroundColor = .black
         setUpViews()
-        
         if let url = contentURL {
             webView.loadRequest(URLRequest(url: url))
         }
-
     }
 
     lazy var webView: UIWebView = {
@@ -32,20 +30,10 @@ class ContentWebViewController: UIViewController, UIWebViewDelegate {
     }()
     
     func setUpViews() {
-        
         self.view.addSubview(webView)
-        
         self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: webView)
         self.view.addConstraintsWithFormat(format: "V:|[v0]|", views: webView)
         
     }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
         
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-
-    }
-    
 }

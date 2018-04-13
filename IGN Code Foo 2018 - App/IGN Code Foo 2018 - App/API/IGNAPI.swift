@@ -13,7 +13,7 @@ class ApiService: NSObject {
     static var shared = ApiService()
     
     struct URLFeed {
-        static let content = "https://ign-apis.herokuapp.com/content?count=20"
+        static let content = "https://ign-apis.herokuapp.com/content"
         static let comments = "https://ign-apis.herokuapp.com/comments"
         static let defaultContentCount:Int = 20
     }
@@ -27,8 +27,37 @@ class ApiService: NSObject {
     func fetchVideoFeedAt(StartIndex: Int, completion: @escaping ([Data]) -> ()) {
         fetchContent(type: "video", startIndex: StartIndex) { (content) in
         completion(content)
+        }
     }
-    }
+    
+    func loadNumberOfViewsForContentID(contentID: String, completion: @escaping (String) -> ()) {
+        
+        guard let baseURL = URL(string: URLFeed.comments) else { return }
+        
+        let query: [String: String] = ["ids":"\(contentID)"]
+        
+        guard let url = baseURL.withQueries(query) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            if let data = data {
+                do {
+                    let comment = try JSONDecoder().decode(Comment.self, from: data)
+                    
+                    DispatchQueue.main.async {
+                        completion("\(comment.content.last?.commentCount ?? 0)")
+                        
+                    }
+                    
+                } catch let jsonErr {
+                    print(jsonErr)
+                }
+            }
+            
+            if let err = err {
+                print(err.localizedDescription)
+            }
+            }.resume()
+        }
     
     func fetchContent(type: String, startIndex:Int, completion: @escaping ([Data]) -> ()) {
         
@@ -46,7 +75,6 @@ class ApiService: NSObject {
                     for content in feed.data {
                         if content.metadata.contentType == type {
                             contents.append(content)
-                            
                         }
                     }
                     DispatchQueue.main.async {
@@ -56,12 +84,11 @@ class ApiService: NSObject {
                     print(jsonError)
                 }
             }
-            
             if let err = err {
                 print(err.localizedDescription)
             }
-            
-            }.resume()
+        }.resume()
     }
-    
 }
+    
+

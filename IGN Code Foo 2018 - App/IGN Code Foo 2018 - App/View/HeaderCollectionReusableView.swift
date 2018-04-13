@@ -36,13 +36,9 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         addSubview(separatorView)
         backgroundColor = .white
         addConstraintsWithFormat(format: "V:|[v0][v1(1)]|", views: sectionHeaderImageView,separatorView)
-//        addConstraintsWithFormat(format: "H:|-[v0]-|", views: sectionHeaderImageView)
-                addConstraintsWithFormat(format: "H:|-\(ContentCell.Constants.sidePadding)-[v0]-\(ContentCell.Constants.sidePadding)-|", views: separatorView)
-        
-//        addConstraint(NSLayoutConstraint(item: sectionHeaderImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 68/644, constant: 0))
+        addConstraintsWithFormat(format: "H:|-\(ContentCell.Constants.sidePadding)-[v0]-\(ContentCell.Constants.sidePadding)-|", views: separatorView)
         
         addConstraint(NSLayoutConstraint(item: sectionHeaderImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
-//        addConstraint(NSLayoutConstraint(item: sectionHeaderImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: sectionHeaderImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.6, constant: 0))
         
     }

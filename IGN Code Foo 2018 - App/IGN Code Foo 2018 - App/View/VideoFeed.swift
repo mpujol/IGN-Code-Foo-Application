@@ -9,7 +9,7 @@
 import UIKit
 
 class VideoFeed: ArticleFeed {
-
+    
     override func fetchFeed() {
         
         ApiService.shared.fetchVideoFeedAt(StartIndex: currentStartIndex) { (content:[Data]) in

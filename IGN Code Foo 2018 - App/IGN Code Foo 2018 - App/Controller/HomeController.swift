@@ -11,7 +11,7 @@ import UIKit
 class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
     struct Constants {
-        static let colletionViewCellHeight:CGFloat = 450
+        static let colletionViewCellHeight:CGFloat = 430
     
     }
 
@@ -23,6 +23,14 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
 
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = .white
+        
+        let titleImageView: UIImageView = {
+            let iv = UIImageView()
+            iv.image = UIImage(named: "IGN Logo")
+            iv.contentMode = .scaleAspectFit
+            return iv
+        }()
+        self.navigationItem.titleView = titleImageView
         
         setupContentTypeMenuBar()
         setupCollectionView()
@@ -44,15 +52,11 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         }
         
         collectionView?.backgroundColor = UIColor.white
-        
         collectionView?.register(ArticleFeed.self, forCellWithReuseIdentifier: articleCellId)
         collectionView?.register(VideoFeed.self, forCellWithReuseIdentifier: videoCellId)
-        
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
-        
         collectionView?.isPagingEnabled = true
-        
     }
     
     
@@ -60,7 +64,6 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         view.addSubview(contentTypeMenuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: contentTypeMenuBar)
         view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: contentTypeMenuBar)
-        
     }
     
     func scrollToMenuIndex(menuIndex: Int) {
@@ -73,19 +76,15 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         var identifier: String = ""
-        
         if indexPath.item == 0 {
             identifier = articleCellId
         } else if indexPath.item == 1 {
             identifier = videoCellId
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height - 50)
@@ -103,9 +102,7 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         let index = targetContentOffset.pointee.x/view.frame.width
         let indexPath = IndexPath(row: Int(index), section: 0)
         contentTypeMenuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-       
     }
-    
 }
 
 
