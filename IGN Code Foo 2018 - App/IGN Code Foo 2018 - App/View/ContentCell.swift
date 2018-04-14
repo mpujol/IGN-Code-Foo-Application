@@ -56,6 +56,7 @@ class ContentCell: BaseCell {
                 switch content.metadata.contentType {
                 case "article":
                     openContentButton.setImage(UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+                    playButtonImageView.isHidden = true
                 case "video":
                     openContentButton.setImage(UIImage(named: "Watch")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal) 
                 default:
@@ -128,6 +129,14 @@ class ContentCell: BaseCell {
         return imageView
     }()
     
+    let playButtonImageView:UIImageView = {
+        let image = UIImage(named: "PlayButton")
+        let iv = UIImageView(image: image)
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.textContainer.lineBreakMode = .byTruncatingTail
@@ -193,7 +202,16 @@ class ContentCell: BaseCell {
         addSubview(openContentButton)
         addSubview(commentButton)
         addSubview(commentCountLabel)
+        
+        thumbnailImageView.addSubview(playButtonImageView)
 
+        thumbnailImageView.addConstraint(NSLayoutConstraint(item: playButtonImageView, attribute: .centerX, relatedBy: .equal, toItem: thumbnailImageView, attribute: .centerX, multiplier: 1, constant: 0))
+        thumbnailImageView.addConstraint(NSLayoutConstraint(item: playButtonImageView, attribute: .centerY, relatedBy: .equal, toItem: thumbnailImageView, attribute: .centerY, multiplier: 1, constant: 0))
+        thumbnailImageView.addConstraint(NSLayoutConstraint(item: playButtonImageView, attribute: .height, relatedBy: .equal, toItem: thumbnailImageView, attribute: .height, multiplier: 0.4, constant: 0))
+        
+        thumbnailImageView.addConstraint(NSLayoutConstraint(item: playButtonImageView, attribute: .height, relatedBy: .equal, toItem: playButtonImageView, attribute: .width, multiplier: 1, constant: 0))
+        
+        
         backgroundColor = .white
 
         //Thumbnail Aspect Ratio constraint
