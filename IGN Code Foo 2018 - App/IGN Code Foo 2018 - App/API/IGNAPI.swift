@@ -81,7 +81,7 @@ class ApiService: NSObject {
                         completion(contents)
                     }
                 } catch let jsonError {
-                    print(jsonError)
+                    print("Found JSON Error:\(jsonError)")
                 }
             }
             if let err = err {

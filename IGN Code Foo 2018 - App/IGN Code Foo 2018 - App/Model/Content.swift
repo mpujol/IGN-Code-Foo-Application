@@ -24,7 +24,7 @@ struct Data: Decodable {
 struct Metadata: Decodable {
     let contentType: String
     let title: String
-    let description: String
+    let description: String?
     let publishDate: String
     let slug: String
     let networks: [String]
