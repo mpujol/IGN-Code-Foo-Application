@@ -7,7 +7,7 @@ Thank you very much for taking the time to go through my application for the Cod
 
 All information can be found in this repository except for my introduction, which I'll link below.
 
-## 1. Introduction
+## 1. [Introduction](https://youtu.be/B0laZfZ08r4)
 ## 2. [The Eiffel Tower of Geomags](https://github.com/mpujol/IGN-Code-Foo-Application/blob/master/Geomags/The%20Eiffel%20Tower%20of%20Geomags%E2%84%A2.docx)
 ## 3. [The Chicken Crosses the Road](https://github.com/mpujol/IGN-Code-Foo-Application/blob/master/The%20Chicken%20Crosses%20The%20Road.playground/Contents.swift)
 
