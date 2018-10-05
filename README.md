@@ -7,6 +7,8 @@ Thank you very much for taking the time to go through my application for the Cod
 
 All information can be found in this repository except for my introduction, which I'll link below.
 
+[IGN Code Foo 2018](https://www.ign.com/code-foo/2018/) - complete breakdown of challenges
+
 ## 1. [Introduction](https://youtu.be/B0laZfZ08r4)
 ## 2. [The Eiffel Tower of Geomags](https://github.com/mpujol/IGN-Code-Foo-Application/blob/master/Geomags/The%20Eiffel%20Tower%20of%20Geomags%E2%84%A2.docx)
 Sacrebleu! The Infinity War damaged a lot of worldwide monuments, including the Eiffel Tower. For some unknown reason (to be revealed in Infinity War 2), all we have left for building materials are Geomags™. The country of France has tasked you with building a new Eiffel Tower with Geomags™. About how many Geomags™ would you need? How would you build it? Describe each step in your thought process.
