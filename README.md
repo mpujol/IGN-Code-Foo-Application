@@ -7,9 +7,29 @@ Thank you very much for taking the time to go through my application for the Cod
 
 All information can be found in this repository except for my introduction, which I'll link below.
 
+[IGN Code Foo 2018](https://www.ign.com/code-foo/2018/) - complete breakdown of challenges
+
 ## 1. [Introduction](https://youtu.be/B0laZfZ08r4)
 ## 2. [The Eiffel Tower of Geomags](https://github.com/mpujol/IGN-Code-Foo-Application/blob/master/Geomags/The%20Eiffel%20Tower%20of%20Geomags%E2%84%A2.docx)
+Sacrebleu! The Infinity War damaged a lot of worldwide monuments, including the Eiffel Tower. For some unknown reason (to be revealed in Infinity War 2), all we have left for building materials are Geomags™. The country of France has tasked you with building a new Eiffel Tower with Geomags™. About how many Geomags™ would you need? How would you build it? Describe each step in your thought process.
+
 ## 3. [The Chicken Crosses the Road](https://github.com/mpujol/IGN-Code-Foo-Application/blob/master/The%20Chicken%20Crosses%20The%20Road.playground/Contents.swift)
+Henny Penny, the chicken, wants to cross the road to go see his favorite historical documentary, Chicken Little. Although, the road often has potholes created by falling sky pieces. Chicken City doesn’t have enough corn in the budget to fix all the potholes, so Henny needs to be careful not to trip when crossing.
+
+Create a program that will count how many paths Henny can take to cross the road with these rules:
+
+A road is defined as a 4 x 4 Coordinate Grid
+Any coordinate on the grid can contain a pothole
+The grid should have at least one pothole
+Henny randomly starts on a coordinate of the Zero Y-edge of the Coordinate Grid — so the left side [0]∪[0, 3]
+The starting coordinate cannot have a pothole
+Henny can only move right (+X), down (-Y), and up (+Y). Henny cannot move left (-X) or diagonally
+Henny cannot backtrack to a coordinate that was already used
+Henny cannot travel through a pothole, and must go around
+A path is complete once the right side is reached [3]∪[0, 3]
+Henny might not be able to reach the other side (no ticket refunds)
+Solve for at least one randomly generated starting point, you do not need to solve for all starting positions
+Display AT LEAST the grid, the valid paths, and the final answer.
 
 >Explain how you implemented the solution. Does your solution work with larger grids?
 
@@ -41,6 +61,7 @@ The general breakdown of finding a path is as follows:
 >Line 157 while (queue.count > 0) { //Pops off first location in queue and explores valid locations. if found, adds to queue until goal is reached or no additional valid locations are found
 
 ## 4. [Apps](https://github.com/mpujol/IGN-Code-Foo-Application/tree/master/IGN%20Code%20Foo%202018%20-%20App)
+Build a native app (iOS or Android) that displays the content and matches this design as close as possible (don’t worry about the icons). Each item should open a webview for the corresponding content when tapped, except comments.
 
 >Add further features or user interactions you think would make sense. Defend your proposals.
 
