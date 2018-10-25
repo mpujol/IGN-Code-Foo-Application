@@ -108,7 +108,7 @@ class ContentTypeMenuCell: BaseCell {
     
     let imageView:UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "ContentTypeArticles")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        imageView.image = UIImage(named: "ContentTypeArticles")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.tintColor = UIColor(red: 188, green: 188, blue: 188)
@@ -133,14 +133,14 @@ class ContentTypeMenuCell: BaseCell {
         addSubview(imageView)
             
         // Aspect Ratio
-        addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.width, multiplier: 120/457, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: imageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 120/457, constant: 0)])
             
         // Height & Width
         addConstraintsWithFormat(format: "V:[v0(24)]", views: imageView)
             
         // centered
-          addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)])
-          addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)])
+          addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)])
+          addConstraints([NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)])
             
     }
     

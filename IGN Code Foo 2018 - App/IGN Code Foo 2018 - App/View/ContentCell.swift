@@ -55,10 +55,10 @@ class ContentCell: BaseCell {
                 
                 switch content.metadata.contentType {
                 case "article":
-                    openContentButton.setImage(UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+                    openContentButton.setImage(UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
                     playButtonImageView.isHidden = true
                 case "video":
-                    openContentButton.setImage(UIImage(named: "Watch")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal) 
+                    openContentButton.setImage(UIImage(named: "Watch")?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal) 
                 default:
                     break
                 }
@@ -113,7 +113,7 @@ class ContentCell: BaseCell {
         textView.textContainerInset = UIEdgeInsets.zero
         textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.vertical)
+        textView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
         
         return textView
     }()
@@ -156,7 +156,7 @@ class ContentCell: BaseCell {
     let openContentButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "Read")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: UIControlState.normal)
+        button.setImage(image, for: UIControl.State.normal)
         button.tintColor = UIColor(red: 193, green: 194, blue: 199)
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -167,7 +167,7 @@ class ContentCell: BaseCell {
     let commentButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "Comment")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: UIControlState.normal)
+        button.setImage(image, for: UIControl.State.normal)
         button.tintColor = UIColor(red: 193, green: 194, blue: 199)
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -215,26 +215,26 @@ class ContentCell: BaseCell {
         backgroundColor = .white
 
         //Thumbnail Aspect Ratio constraint
-        addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: thumbnailImageView, attribute: NSLayoutAttribute.width, multiplier: (9/16), constant: 0)])
+        addConstraints([NSLayoutConstraint(item: thumbnailImageView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: thumbnailImageView, attribute: NSLayoutConstraint.Attribute.width, multiplier: (9/16), constant: 0)])
 
         //openContentButton Aspect Ratio Constraint
-        addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.width, multiplier: (120/457), constant: 0)])
+        addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.width, multiplier: (120/457), constant: 0)])
 
         //commentButton Aspect Ratio Contraint
-        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: commentButton, attribute: NSLayoutAttribute.width, multiplier: (120/457), constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: commentButton, attribute: NSLayoutConstraint.Attribute.width, multiplier: (120/457), constant: 0)])
 
         //commmentButton height constraint
-        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 0)])
 
         //commentButton vertical location
-        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)])
-        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentButton, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)])
 
         //commentCountLabel vertical Location
-        addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)])
-        addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: openContentButton, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: commentCountLabel, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: openContentButton, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)])
 
-        addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: commentButton, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)])
+        addConstraints([NSLayoutConstraint(item: openContentButton, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.lessThanOrEqual, toItem: commentButton, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)])
 
         //Vertical Constraints
         addConstraintsWithFormat(format: "V:|-28-[v0(10)][v1]-[v2]-6-[v3]-[v4(25)]-[v5(1)]|", views: publishDateLabel,titleTextView, thumbnailImageView, subtitleTextView, openContentButton,separatorView)

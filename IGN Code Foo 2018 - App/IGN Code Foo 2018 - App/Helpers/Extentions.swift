@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    open override func viewDidLoad() {
+        setNeedsStatusBarAppearanceUpdate()
+    }
+}
+
 extension UIView {
     func addConstraintsWithFormat(format: String, views: UIView...) {
         var viewsDictionary = [String:UIView]()
@@ -15,7 +24,7 @@ extension UIView {
             let key = "v\(index)"
             viewsDictionary[key] = view
         }
-                addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+                addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
 

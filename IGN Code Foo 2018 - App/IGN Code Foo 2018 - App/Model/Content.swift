@@ -12,10 +12,10 @@ struct Feed: Decodable {
     let count: Int
     let startIndex: Int
     let data: [Data]
-    }
+}
 
 struct Data: Decodable {
-    let contentId:String
+    let contentId: String
     let thumbnails: [Thumbnail]
     let metadata: Metadata
     let tags: [String]
@@ -47,7 +47,7 @@ struct commentMetadata: Decodable {
     let id: String
     let commentCount: Int
     
-    enum CodingKeys: CodingKey,String {
+    enum CodingKeys: String, CodingKey {
         case id
         case commentCount = "count"
     }

@@ -14,13 +14,13 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         static let colletionViewCellHeight:CGFloat = 430
     
     }
-
+    
+    
     let articleCellId = "articleCellId"
     let videoCellId = "videoCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = .white
         
@@ -54,8 +54,8 @@ class HomeController: UICollectionViewController,UICollectionViewDelegateFlowLay
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ArticleFeed.self, forCellWithReuseIdentifier: articleCellId)
         collectionView?.register(VideoFeed.self, forCellWithReuseIdentifier: videoCellId)
-        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsets.init(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 50, left: 0, bottom: 0, right: 0)
         collectionView?.isPagingEnabled = true
     }
     

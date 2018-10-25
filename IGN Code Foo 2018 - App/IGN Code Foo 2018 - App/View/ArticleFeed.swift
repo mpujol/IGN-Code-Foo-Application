@@ -66,7 +66,7 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
+        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeaderId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,7 +76,7 @@ class ArticleFeed: BaseCell ,UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ContentCell
         cell.content = contents?[indexPath.item]
-        cell.openContentButton.addTarget(self, action: #selector(didSelectOpenContentButtonfor(sender:)), for: UIControlEvents.touchUpInside)
+        cell.openContentButton.addTarget(self, action: #selector(didSelectOpenContentButtonfor(sender:)), for: UIControl.Event.touchUpInside)
         cell.openContentButton.tag = indexPath.item
         if let contentCount = self.contents?.count {
             if indexPath.item == contentCount - 1 {

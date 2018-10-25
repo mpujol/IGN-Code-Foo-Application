@@ -66,7 +66,7 @@ class ApiService: NSObject {
         let query: [String: String] = ["startIndex":"\(startIndex)","count":"\(URLFeed.defaultContentCount)"]
         
         guard let url = baseURL.withQueries(query) else { return }
-        
+        print(url)
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let data = data {
                 do {
